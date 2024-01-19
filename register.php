@@ -38,7 +38,6 @@
                 <a>Confirmar</a>
             </div>
 
-            <!-- New Fields added after Confirmar Contraseña -->
             <label for="email" class="email-lebel">Correo Electrónico:</label>
             <input type="email" id="email" name="email" class="email-input" required>
 
@@ -69,7 +68,6 @@
 
             <label for="postal_code" class="postal-code-lebel">Código Postal:</label>
             <input type="text" id="postal_code" name="postal_code" class="postal-code-input">
-            <!-- End of New Fields -->
 
             <button type="submit" class="form-button"><i class="fas fa-user-plus"></i> Registrar</button>
             <div class="button-inicio">

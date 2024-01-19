@@ -25,8 +25,11 @@ text-align: center;
 
 section p {
     text-align: justify;
-    font-size: 1.2em; /* Cambia el tamaño del texto según tus preferencias */
-    line-height: 1.5; /* Establece el espaciado entre líneas */
+    font-size: 1.2em; 
+    line-height: 1.5; 
+    margin-left: 3%;
+    margin-right: 3%;
+
 }
 
 h1, h2 {
@@ -77,23 +80,23 @@ section {
 
 form {
     margin-top: 20px;
-    text-align: left; /* Alinea el texto del formulario a la izquierda */
+    text-align: left;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px; /* Añade espacio entre las etiquetas y los campos de entrada */
-    color: #333; /* Color del texto de las etiquetas */
+    margin-bottom: 5px; 
+    color: #333; 
     text-align: justify;
-    font-size: 1.2em; /* Cambia el tamaño del texto según tus preferencias */
-    line-height: 1.5; /* Establece el espaciado entre líneas */
+    font-size: 1.2em; 
+    line-height: 1.5; 
 }
 
 form input {
-    width: 100%; /* Ocupa todo el ancho disponible */
+    width: 100%; 
     padding: 10px;
-    margin-bottom: 15px; /* Añade espacio entre los campos de entrada */
-    box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
+    margin-bottom: 15px;
+    box-sizing: border-box; 
 }
 
 form button.form-button {
