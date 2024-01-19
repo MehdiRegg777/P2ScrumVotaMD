@@ -71,7 +71,10 @@
             <input type="text" id="postal_code" name="postal_code" class="postal-code-input">
             <!-- End of New Fields -->
 
-            <button type="submit" class="form-button">Registrar</button>
+            <button type="submit" class="form-button"><i class="fas fa-user-plus"></i> Registrar</button>
+            <div class="button-inicio">
+                <a href="index.php"><i class="fas fa-home"></i> volver Inicio</a>
+            </div>
         </form>
     </section>
 </main>

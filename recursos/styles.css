@@ -136,6 +136,30 @@ form button.form-button:hover {
     background-color: #9099A2;
 }
 
+.button-inicio {
+    float: left;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:10px;    
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.button-inicio a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.button-inicio a:hover {
+    background-color: #9099A2;
+}
+
 footer {
     text-align: center;
     padding: 1em 0;
