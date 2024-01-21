@@ -189,11 +189,25 @@ footer {
 /*Notificaciones*/
 
 
+
+.cerrar-notificacion {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
 .notificacion-error {
     background-color: #ffcccc;
-    color: #cc0000;
-    padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #cc0000;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
     border-radius: 5px;
 }

@@ -15,6 +15,17 @@ $(document).ready(function () {
         }
     });
 
+    $(".volver-confirm-password-button").click(function () {
+        
+
+        $(".password-label, .password-input, .confirm-password-button, .volver-confirm-password-button").hide();
+        $(".user-input").prop("disabled", false);
+        $(".password-input").val("");
+        $(".confirm-username").show();
+        scrollTo(".user-label");
+
+    });
+
     $(".confirm-password-button").click(function () {
         if (validarContraseña()) {
             $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button, .volver-confirm-confirm-password-button").show();
@@ -24,6 +35,16 @@ $(document).ready(function () {
         } else {
             mostrarError("Contraseña no válida. Por favor, inténtelo de nuevo.");
         }
+    });
+
+    $(".volver-confirm-confirm-password-button").click(function () {
+
+        $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button, .volver-confirm-confirm-password-button").hide();
+        $(".password-input").prop("disabled", false);
+        $(".confirm-password-input").val("");
+        $(".confirm-password-button, .volver-confirm-password-button").show();
+        scrollTo(".password-label");
+
     });
 
     $(".confirm-confirm-password-button").click(function () {
@@ -37,6 +58,16 @@ $(document).ready(function () {
         }
     });
 
+    $(".volver-confirm-email").click(function () {
+
+        $(".email-lebel, .email-input, .confirm-email, .volver-confirm-email").hide();
+        $(".confirm-password-input").prop("disabled", false);
+        $(".email-input").val("");
+        $(".confirm-confirm-password-button, .volver-confirm-confirm-password-button").show();
+        scrollTo(".confirm-password-label");
+
+    });
+
     $(".confirm-email").click(function () {
         if (validarCorreoElectronico()) {
             $(".phone-level, .phone-input, .confirm-phone, .volver-confirm-phone").show();
@@ -46,6 +77,16 @@ $(document).ready(function () {
         } else {
             mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
         }
+    });
+
+    $(".volver-confirm-phone").click(function () {
+
+        $(".phone-level, .phone-input, .confirm-phone, .volver-confirm-phone").hide();
+        $(".email-input").prop("disabled", false);
+        $(".phone-input").val("");
+        $(".confirm-email, .volver-confirm-email").show();
+        scrollTo(".email-lebel");
+
     });
 
     $(".confirm-phone").click(function () {
@@ -59,6 +100,15 @@ $(document).ready(function () {
         }
     });
 
+    $(".volver-confirm-country").click(function () {
+
+        $(".country-lebel, .country-input, .confirm-country, .volver-confirm-country").hide();
+        $(".phone-input").prop("disabled", false);
+        $(".country-input").val("");
+        $(".confirm-phone, .volver-confirm-phone").show();
+        scrollTo(".phone-level");
+    });
+
     $(".confirm-country").click(function () {
        if (validarPais()) {
            $(".city-lebel, .city-input, .confirm-city, .volver-confirm-city").show();
@@ -70,17 +120,37 @@ $(document).ready(function () {
        }
     }); 
 
+    $(".volver-confirm-city").click(function () {
+        $(".city-lebel, .city-input, .confirm-city, .volver-confirm-city").hide();
+        $(".country-input").prop("disabled", false);
+        $(".city-input").val("");
+        $(".confirm-country, .volver-confirm-country").show();
+        scrollTo(".country-lebel");
+
+     }); 
+
     $(".confirm-city").click(function () {
         if (validarCiudad()) {
             $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button").show();
             $(".city-input").prop("disabled", true);
-
             $(".confirm-city, .volver-confirm-city").hide();
             scrollTo(".postal-code-lebel");
         } else {
             mostrarError("Ciudad no válida. Por favor, inténtelo de nuevo.");
         }
     });
+
+    $(".volver-confirm-postal").click(function () {
+
+        $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button").hide();
+        $(".city-input").prop("disabled", false);
+        $(".postal-code-input").val("");
+        $(".confirm-city, .volver-confirm-city").show();
+        scrollTo(".city-lebel");
+
+    });
+
+    
 
     function scrollTo(element) {
         $('html, body').animate({
@@ -162,26 +232,18 @@ $(document).ready(function () {
     }
 
     function mostrarError(mensaje) {
-        // Crear elemento de notificación
         var notificacion = $("<div class='notificacion-error'></div>");
-        notificacion.text(mensaje);
-    
-        // Agregar notificación al contenedor
+        var botonCerrar = $("<span class='cerrar-notificacion'>&times;</span>");
+        notificacion.append(botonCerrar);
+        notificacion.append("<span class='mensaje-notificacion'>" + mensaje + "</span>");
         $("#notification-container").append(notificacion);
-    
-        // Desvanecer la notificación al hacer clic
-        notificacion.click(function () {
+
+        botonCerrar.click(function () {
             notificacion.fadeOut(500, function () {
-                $(this).remove(); // Eliminar la notificación después de desvanecerse
+                $(this).remove(); 
             });
         });
-    
-        /* 
-        setTimeout(function () {
-            notificacion.fadeOut(500, function () {
-                $(this).remove(); // Eliminar la notificación después de desvanecerse
-            });
-        }, 3000); // Desaparece después de 3 segundos (puedes ajustar este valor) */
+
     }
     
     
