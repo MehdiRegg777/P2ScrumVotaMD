@@ -1,40 +1,77 @@
 $(document).ready(function () {
 
+    // Oculta todos los elementos de entrada excepto el primer conjunto
     $(".password-label, .password-input, .confirm-password-button, .confirm-password-label, .confirm-password-input, .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .phone-level, .phone-input, .confirm-phone, .country-lebel, .country-input, .confirm-country, .city-lebel, .city-input, .confirm-city , .postal-code-lebel, .postal-code-input").hide();
 
     $(".confirm-username").click(function () {
-        $(".password-label, .password-input, .confirm-password-button").show();
-        scrollTo(".password-label");
+        
+        if (validarUsuario()) {
+            $(".password-label, .password-input, .confirm-password-button").show();
+            $(".confirm-username").hide();
+            scrollTo(".password-label");
+        } else {
+            mostrarError("Usuario no válida. Por favor, inténtelo de nuevo.");
+        }
     });
 
     $(".confirm-password-button").click(function () {
-        $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button").show();
-        scrollTo(".confirm-password-label");
+        if (validarContraseña()) {
+            $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button").show();
+            $(".confirm-password-button").hide();
+            scrollTo(".confirm-password-label");
+        } else {
+            mostrarError("Contraseña no válida. Por favor, inténtelo de nuevo.");
+        }
     });
 
     $(".confirm-confirm-password-button").click(function () {
-        $(".email-lebel, .email-input, .confirm-email").show();
-        scrollTo(".email-lebel");
+        if (validarConfirmacionContraseña()) {
+            $(".email-lebel, .email-input, .confirm-email").show();
+            $(".confirm-confirm-password-button").hide();
+            scrollTo(".email-lebel");
+        } else {
+            mostrarError("La confirmación de contraseña no coincide. Por favor, inténtelo de nuevo.");
+        }
     });
 
     $(".confirm-email").click(function () {
-        $(".phone-level, .phone-input, .confirm-phone").show();
-        scrollTo(".phone-level");
+        if (validarCorreoElectronico()) {
+            $(".phone-level, .phone-input, .confirm-phone").show();
+            $(".confirm-email").hide();
+            scrollTo(".phone-level");
+        } else {
+            mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
+        }
     });
 
     $(".confirm-phone").click(function () {
-        $(".country-lebel, .country-input, .confirm-country").show();
-        scrollTo(".country-lebel");
+        if (validarTelefono()) {
+            $(".country-lebel, .country-input, .confirm-country").show();
+            $(".confirm-phone").hide();
+            scrollTo(".country-lebel");
+        } else {
+            mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
+        }
     });
 
     $(".confirm-country").click(function () {
-       $(".city-lebel, .city-input, .confirm-city").show();
-       scrollTo(".city-lebel");
+       if (validarPais()) {
+           $(".city-lebel, .city-input, .confirm-city").show();
+           $(".confirm-country").hide();
+           scrollTo(".city-lebel");
+       } else {
+           mostrarError("País no válido. Por favor, inténtelo de nuevo.");
+       }
     }); 
 
     $(".confirm-city").click(function () {
-        $(".postal-code-lebel, .postal-code-input").show();
-        scrollTo(".postal-code-lebel");
+        if (validarCiudad()) {
+            $(".postal-code-lebel, .postal-code-input").show();
+            $(".confirm-city").hide();
+            scrollTo(".postal-code-lebel");
+        } else {
+            mostrarError("Ciudad no válida. Por favor, inténtelo de nuevo.");
+        }
     });
 
     function scrollTo(element) {
@@ -42,4 +79,102 @@ $(document).ready(function () {
             scrollTop: $(element).offset().top
         }, 1200); 
     }
+
+    function validarUsuario() {
+        // Lógica de validación para la ciudad
+        var usuario = $("#username").val();
+        return usuario.trim() !== "";  
+    }
+
+    function validarContraseña() {
+        // Verifica que la contraseña tenga al menos 8 caracteres de longitud
+        var contraseña = $("#password").val();
+
+        if (contraseña.length < 8) {
+            return false;
+        }
+    
+        // Verifica que la contraseña contenga al menos una letra mayúscula
+        if (!/[A-Z]/.test(contraseña)) {
+            return false;
+        }
+    
+        // Verifica que la contraseña contenga al menos una letra minúscula
+        if (!/[a-z]/.test(contraseña)) {
+            return false;
+        }
+    
+        // Verifica que la contraseña contenga al menos un número
+        if (!/\d/.test(contraseña)) {
+            return false;
+        }
+    
+        // Si la contraseña pasa todas las verificaciones, es válida
+        return true;
+    }
+
+    function validarConfirmacionContraseña() {
+        // Lógica de validación para la confirmación de contraseña
+        var contraseña = $("#password").val();
+        var confirmacionContraseña = $("#confirm_password").val();
+        // Verifica si la contraseña y la confirmación coinciden
+        if (contraseña === confirmacionContraseña) {
+            return true; // Devuelve true si es válida, false si no lo es
+        } 
+        
+    }
+
+    function validarCorreoElectronico() {
+        // Lógica de validación para el correo electrónico
+        var correoElectronico = $("#email").val();
+        var expresionRegularCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (expresionRegularCorreo.test(correoElectronico)) {
+            return true; 
+        }
+        
+    }
+
+    function validarTelefono() {
+        var telefono = $("#phone").val();
+    
+        var expresionRegularTelefono = /^(\+\d{1,4}|00\d{1,4}|)?\d{10}$/;
+    
+        return expresionRegularTelefono.test(telefono);
+    }
+
+    function validarPais() {
+
+        var pais = $("#country").val();
+        return pais.trim() !== "";  
+    }
+
+    function validarCiudad() {
+        var ciudad = $("#city").val();
+        return ciudad.trim() !== "";  
+    }
+
+    function mostrarError(mensaje) {
+        // Crear elemento de notificación
+        var notificacion = $("<div class='notificacion-error'></div>");
+        notificacion.text(mensaje);
+    
+        // Agregar notificación al contenedor
+        $("#notification-container").append(notificacion);
+    
+        // Desvanecer la notificación al hacer clic
+        notificacion.click(function () {
+            notificacion.fadeOut(500, function () {
+                $(this).remove(); // Eliminar la notificación después de desvanecerse
+            });
+        });
+    
+        /* 
+        setTimeout(function () {
+            notificacion.fadeOut(500, function () {
+                $(this).remove(); // Eliminar la notificación después de desvanecerse
+            });
+        }, 3000); // Desaparece después de 3 segundos (puedes ajustar este valor) */
+    }
+    
+    
 });

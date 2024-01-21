@@ -107,7 +107,6 @@ form button.form-button {
     text-decoration: none;
     border-radius: 8px;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -135,21 +134,27 @@ form button.form-button:hover {
     font-size: 18px;
 }
 
-.button-forum a:hover {
-    background-color: #9099A2;
+.buttons-registers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button {
+    margin-right: 10px; /* Ajusta el valor según sea necesario */
 }
 
 .button-inicio {
-    float: left;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top:10px;    
-    margin-bottom: 20px;
-    margin-right: 10px;
+    margin-left: 10px; /* Ajusta el valor según sea necesario */
 }
 
-.button-inicio a {
-    display: inline-block;
+.form-button:hover,
+.button-inicio a:hover {
+    background-color: #9099A2;
+}
+
+.form-button,
+.button-inicio a {    
     padding: 10px 20px;
     background-color: #6D7993;
     color: #fff;
@@ -159,9 +164,7 @@ form button.form-button:hover {
     font-size: 18px;
 }
 
-.button-inicio a:hover {
-    background-color: #9099A2;
-}
+
 
 footer {
     text-align: center;
@@ -180,4 +183,17 @@ footer {
         
         }
 
+}
+
+
+/*NOTIFICACIONES*/
+
+
+.notificacion-error {
+    background-color: #ffcccc;
+    color: #cc0000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
 }
