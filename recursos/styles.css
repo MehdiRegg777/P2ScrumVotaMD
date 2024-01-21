@@ -211,3 +211,12 @@ footer {
     position: relative;
     border-radius: 5px;
 }
+
+
+/*Control de imagen de errors forbiden*/
+
+.errorpng {
+    max-width: 50%;
+    height: auto;
+    margin-top: 15px;
+}
