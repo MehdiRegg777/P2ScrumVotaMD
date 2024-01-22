@@ -47,7 +47,7 @@
                     <a class="confirm-email">Continuar</a>
                 </div>
 
-                <label for="phone" class="phone-level">Teléfono [incluye el código del país (+.. o 00..)]:</label>
+                <label for="phone" class="phone-level">Teléfono [incluye el código de tu país (+34.. o 0034..)]:</label>
                 <input type="tel" id="phone" name="phone" class="phone-input" required>
 
                 <div class="button-forum">

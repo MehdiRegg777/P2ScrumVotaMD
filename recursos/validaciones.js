@@ -33,7 +33,7 @@ $(document).ready(function () {
             $(".confirm-password-button, .volver-confirm-password-button").hide();
             scrollTo(".confirm-password-label");
         } else {
-            mostrarError("Contraseña no válida. Por favor, inténtelo de nuevo.");
+            mostrarError("Contraseña no válida. La contraseña debe tener una longitud mínima de 8 caracteres e incluir al menos una letra mayúscula, una letra minúscula y un número. Por favor, inténtelo de nuevo.");
         }
     });
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
             $(".confirm-confirm-password-button, .volver-confirm-confirm-password-button").hide();
             scrollTo(".email-lebel");
         } else {
-            mostrarError("La confirmación de contraseña no coincide. Por favor, inténtelo de nuevo.");
+            mostrarError("La Contraseña no coincide. Por favor, inténtelo de nuevo.");
         }
     });
 
