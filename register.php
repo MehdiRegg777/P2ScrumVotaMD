@@ -10,7 +10,23 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
+<?php
+    // (1.1) Conectamos a MySQL (host, usuario, contraseña)
+    $conn = mysqli_connect('localhost', 'aws27', 'aws27mehdidiego');
 
+    // (1.2) Elegimos la base de datos con la que trabajaremos
+    mysqli_select_db($conn, 'vota_DDBB');
+
+    // (1.3) Obtenemos la lista de continentes para el menú desplegable
+    $continentes_query = "select name from country;";
+    $continentes_result = mysqli_query($conn, $continentes_query);
+
+    if (!$continentes_result) {
+        $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
+        $message .= 'Consulta realitzada: ' . $continentes_query;
+        die($message);
+    }
+    ?>
 <main>
     <section>
         <h1>Registrar Usuario</h1>
@@ -54,9 +70,17 @@
                     <a class="volver-confirm-phone">Volver</a>
                     <a class="confirm-phone">Continuar</a>
                 </div>
-
                 <label for="country" class="country-lebel">País:</label>
-                <input type="text" id="country" name="country" class="country-input" required>
+                <select id="country" name="country" class="country-lebel" required>
+                    <?php
+                    // Mostrar opciones del menú desplegable con los paises
+                    while ($row = mysqli_fetch_assoc($continentes_result)) {
+                        echo "<option class='country-input' value='" . $row["name"] . "'>" . $row["name"] . "</option>";
+                    }
+                    ?>
+                </select>
+
+
 
                 <div class="button-forum ">
                     <a class="volver-confirm-country">Volver</a>

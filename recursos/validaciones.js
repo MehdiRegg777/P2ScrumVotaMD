@@ -221,9 +221,8 @@ $(document).ready(function () {
     }
 
     function validarPais() {
-
         var pais = $("#country").val();
-        return pais.trim() !== "";  
+        return pais.trim() !== "";
     }
 
     function validarCiudad() {
