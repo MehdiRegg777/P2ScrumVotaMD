@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Oculta todos los elementos de entrada excepto el primer conjunto
-    $(".password-label, .password-input, .volver-confirm-password-button, .confirm-password-button, .confirm-password-label, .confirm-password-input, .volver-confirm-confirm-password-button , .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .volver-confirm-email, .phone-level, .phone-input, .confirm-phone, .volver-confirm-phone, .country-lebel, .country-input, .confirm-country, .volver-confirm-country, .city-lebel, .city-input, .confirm-city , .volver-confirm-city , .postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button").hide();
+    $(".password-label, .password-input, .volver-confirm-password-button, .confirm-password-button, .confirm-password-label, .confirm-password-input, .volver-confirm-confirm-password-button , .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .volver-confirm-email, .phone-level, .phone-input, .confirm-phone, .volver-confirm-phone, .country-lebel, .country-input, .confirm-country, .volver-confirm-country, .city-lebel, .city-input, .confirm-city , .volver-confirm-city , .postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button, .volver-confirm-postal-2, .confirm-postal").hide();
 
     $(".confirm-username").click(function () {
         
@@ -131,12 +131,23 @@ $(document).ready(function () {
 
     $(".confirm-city").click(function () {
         if (validarCiudad()) {
-            $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button").show();
+            $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .confirm-postal").show();
             $(".city-input").prop("disabled", true);
             $(".confirm-city, .volver-confirm-city").hide();
             scrollTo(".postal-code-lebel");
         } else {
-            mostrarError("Ciudad no válida. Por favor, inténtelo de nuevo.");
+            mostrarError("Ciudad no válida, no debe tener digitos. Por favor, inténtelo de nuevo.");
+        }
+    });
+
+    $(".confirm-postal").click(function () {
+        if (validarPostal()) {
+            $(".volver-confirm-postal-2, .form-button").show();
+            $(".postal-code-input").prop("disabled", true);
+            $(".volver-confirm-postal, .confirm-postal").hide();
+            scrollTo(".postal-code-lebel");
+        } else {
+            mostrarError("Codigo postal invalido, son 5 digitos.");
         }
     });
 
@@ -149,7 +160,6 @@ $(document).ready(function () {
         scrollTo(".city-lebel");
 
     });
-
     
 
     function scrollTo(element) {
@@ -227,8 +237,18 @@ $(document).ready(function () {
 
     function validarCiudad() {
         var ciudad = $("#city").val();
-        return ciudad.trim() !== "";  
+        var formatoLetras = /^[A-Za-z]+$/;  // Expresión regular para solo letras
+    
+        return ciudad.trim() !== "" && formatoLetras.test(ciudad.trim());
     }
+
+    function validarPostal() {
+        var postal = $("#postal_code").val();
+        var formatoPostal = /^\d{5}$/;  // Expresión regular para un código postal de 5 dígitos
+    
+        return postal.trim() !== "" && formatoPostal.test(postal.trim());
+    }
+    
 
     function mostrarError(mensaje) {
         var notificacion = $("<div class='notificacion-error'></div>");

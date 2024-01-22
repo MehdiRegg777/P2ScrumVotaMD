@@ -100,6 +100,10 @@
 
                 <div class="button-forum ">
                     <a class="volver-confirm-postal">Volver</a>
+                    <a class="confirm-postal">Continuar</a>
+                </div>
+                <div class="button-forum ">
+                    <a class="volver-confirm-postal-2">Volver</a>
                     <button type="submit" class="form-button"><i class="fas fa-user-plus"></i> Registrar</button>
                 </div>
             </div>
