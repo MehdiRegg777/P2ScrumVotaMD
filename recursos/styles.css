@@ -134,6 +134,11 @@ form button.form-button:hover {
     font-size: 18px;
 }
 
+.button-forum a:hover {
+    background-color: #9099A2;
+    cursor: pointer;
+}
+
 .buttons-registers {
     display: flex;
     justify-content: center;
