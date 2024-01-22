@@ -16,7 +16,7 @@
         <h1>Registrar Usuario</h1>
         <form method="post" >
             <div class="level-register">
-                <label for="username" class="password-label">Usuario:</label>
+                <label for="username" class="user-label">Usuario:</label>
                 <input type="text" id="username" name="username" class="user-input" required>
                 
                 <div class="button-forum ">
