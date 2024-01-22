@@ -1,14 +1,32 @@
 $(document).ready(function () {
 
     // Oculta todos los elementos de entrada excepto el primer conjunto
-    $(".password-label, .password-input, .volver-confirm-password-button, .confirm-password-button, .confirm-password-label, .confirm-password-input, .volver-confirm-confirm-password-button , .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .volver-confirm-email, .phone-level, .phone-input, .confirm-phone, .volver-confirm-phone, .country-lebel, .country-input, .confirm-country, .volver-confirm-country, .city-lebel, .city-input, .confirm-city , .volver-confirm-city , .postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button, .volver-confirm-postal-2, .confirm-postal").hide();
+    $("  .volver-confirm-password-button, .confirm-password-button, .confirm-password-label, .confirm-password-input, .volver-confirm-confirm-password-button , .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .volver-confirm-email, .phone-level, .phone-input, .confirm-phone, .volver-confirm-phone, .country-lebel, .country-input, .confirm-country, .volver-confirm-country, .city-lebel, .city-input, .confirm-city , .volver-confirm-city , .postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button, .volver-confirm-postal-2, .confirm-postal").hide();
 
     $(".confirm-username").click(function () {
         
         if (validarUsuario()) {
-            $(".password-label, .password-input, .confirm-password-button, .volver-confirm-password-button").show();
+            var label = $("<label>")
+                .attr("for", "password")
+                .addClass("password-label")
+                .text("Contraseña:");
+
+            // Crear el input de contraseña
+            var input = $("<input>")
+                .attr({
+                    type: "password",
+                    id: "password",
+                    name: "password"
+                })
+                .addClass("password-input")
+                .prop("required", true);
+
+            // Agregar label e input al body
+            $("form .user-input").after(label, input);
             $(".user-input").prop("disabled", true);
             $(".confirm-username").hide();
+            $(".volver-confirm-password-button, .confirm-password-button").show();
+
             scrollTo(".password-label");
         } else {
             mostrarError("Usuario no válido. Por favor, inténtelo de nuevo.");

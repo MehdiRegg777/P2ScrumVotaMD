@@ -39,8 +39,7 @@
                     <a class="confirm-username">Continuar</a>
                 </div>
 
-                <label for="password" class="password-label">Contraseña:</label>
-                <input type="password" id="password" name="password" class="password-input" required>
+                
             
                 <div class="button-forum ">
                     <a class="volver-confirm-password-button">Volver</a>
