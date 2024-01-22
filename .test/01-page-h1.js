@@ -28,7 +28,7 @@ class MyTest extends BasePhpTest
         await this.driver.get("http://localhost:8000/");
         var text = await this.driver.findElement(By.tagName("h1")).getText();
 
-        assert( text=="Projecte base", "Títol H1 de la pàgina incorrecte");
+        assert( text=="Bienvenido Al Portal VotaYa", "Títol H1 de la pàgina incorrecte");
 
         console.log("TEST OK");
 	}
