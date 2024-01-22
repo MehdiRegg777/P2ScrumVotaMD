@@ -11,7 +11,7 @@ $(document).ready(function () {
             $(".confirm-username").hide();
             scrollTo(".password-label");
         } else {
-            mostrarError("Usuario no válida. Por favor, inténtelo de nuevo.");
+            mostrarError("Usuario no válido. Por favor, inténtelo de nuevo.");
         }
     });
 
@@ -236,15 +236,15 @@ $(document).ready(function () {
         var botonCerrar = $("<span class='cerrar-notificacion'>&times;</span>");
         notificacion.append(botonCerrar);
         notificacion.append("<span class='mensaje-notificacion'>" + mensaje + "</span>");
-        $("#notification-container").append(notificacion);
-
+        $("#notification-container").prepend(notificacion); // Cambio aquí
+    
         botonCerrar.click(function () {
             notificacion.fadeOut(500, function () {
                 $(this).remove(); 
             });
         });
-
     }
+    
     
     
 });
