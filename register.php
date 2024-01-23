@@ -41,7 +41,7 @@
     <section>
         <h1>Registrar Usuario</h1>
         <form method="post" action="">
-            
+
             <div class="level-register">
 
             </div>
