@@ -141,6 +141,7 @@ form button.form-button:hover {
     border-radius: 8px;
     transition: background-color 0.3s ease;
     font-size: 18px;
+    margin-right: 10px;
 }
 
 .button-forum a:hover {

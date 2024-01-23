@@ -84,7 +84,6 @@ $(document).ready(function () {
             );
 
         $(".button-forum").replaceWith(newContent);
-        scrollTo(".user-label");
     });
     
     $(".level-register").on("click", ".confirm-password-button", function () {
@@ -149,7 +148,6 @@ $(document).ready(function () {
         // Reemplazar el contenido del div con la clase "button-forum"
         $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".password-label");
 
     });
 
@@ -214,7 +212,6 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".confirm-password-label");
 
     });
 
@@ -259,7 +256,7 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
-            scrollTo(".phone-level");
+            scrollTo(".phone-label");
         } else {
             mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
         }
@@ -285,7 +282,6 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".email-lebel");
 
     });
 
@@ -309,7 +305,6 @@ $(document).ready(function () {
         // Reemplazar el contenido del div con la clase "button-forum"
         $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".phone-level");
     });
 
     $(".level-register").on("click", ".confirm-country", function () {
@@ -350,7 +345,7 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
-           scrollTo(".city-lebel");
+           scrollTo(".city-label");
        } else {
            mostrarError("País no válido. Por favor, inténtelo de nuevo.");
        }
@@ -376,7 +371,6 @@ $(document).ready(function () {
         // Reemplazar el contenido del div con la clase "button-forum"
         $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".country-lebel");
 
      }); 
 
@@ -445,7 +439,6 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".postal-code-input");
 
     });
 
@@ -499,7 +492,6 @@ $(document).ready(function () {
         // Reemplazar el contenido del div con la clase "button-forum"
         $(".button-forum").replaceWith(newContent);
 
-        scrollTo(".postal-code-input");
 
     });
     

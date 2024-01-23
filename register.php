@@ -81,7 +81,7 @@ if (validarTelefono()) {
     //     echo "$('.country-input').append($('<option>', { value: '" . $row["name"] . "', text: '" . str_replace("'", "\\'", $row["name"]) . "'}));";
 
     // }
-    
+
     foreach ($continentes_result as $pais) {
         echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
     }
@@ -105,7 +105,7 @@ if (validarTelefono()) {
 
     $(".button-forum").replaceWith(newContent);
 
-    scrollTo(".country-lebel");
+    scrollTo(".country-label");
     } else {
         mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
     }
@@ -129,6 +129,12 @@ if (validarTelefono()) {
                 $(this).remove(); 
             });
         });
+    }
+
+    function scrollTo(element) {
+        $('html, body').animate({
+            scrollTop: $(element).offset().top
+        }, 1200); 
     }
 
 });
