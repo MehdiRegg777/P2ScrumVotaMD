@@ -11,24 +11,29 @@
 </head>
 <body>
 <?php
-    // (1.1) Conectamos a MySQL (host, usuario, contraseña)
-    $conn = mysqli_connect('localhost', 'aws27', 'aws27mehdidiego');
+ 
 
-    // (1.2) Elegimos la base de datos con la que trabajaremos
-    mysqli_select_db($conn, 'vota_DDBB');
 
-    // (1.3) Obtenemos la lista de continentes para el menú desplegable
-    $continentes_query = "select name from country;";
-    $continentes_result = mysqli_query($conn, $continentes_query);
-
-    if (!$continentes_result) {
-        $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
-        $message .= 'Consulta realitzada: ' . $continentes_query;
-        die($message);
-    }
     
+    try {
+        $hostname = "localhost";
+        $dbname = "vota_DDBB";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        $querystr = "SELECT name FROM country;";
+        $continentes_result = $pdo->prepare($querystr);
+        $continentes_result->execute();
+    
+        $resultados = $continentes_result->fetchAll(PDO::FETCH_ASSOC);
 
-
+        $pdo = null;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        exit;
+    }
 
 ?>
         
@@ -36,10 +41,7 @@
     <section>
         <h1>Registrar Usuario</h1>
         <form method="post" action="">
-
-            <input type="hidden" name="hidden_usuario" value="" />
-            <input type="hidden" name="hidden_password" value="" />
-
+            
             <div class="level-register">
 
             </div>
@@ -49,7 +51,6 @@
             <div class="buttons-registers">
                 <div class="button-inicio">
                     <a href="index.php"><i class="fas fa-home"></i> volver Inicio</a>
-                    <input type="submit" class="form-button" value="enviar2"><i class="fas fa-user-plus"></i> Registrar</imput>
                 </div>
             </div>
 
@@ -83,7 +84,7 @@ if (validarTelefono()) {
     <?php
 
 
-    foreach ($continentes_result as $pais) {
+    foreach ($resultados as $pais) {
         echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
     }
 
