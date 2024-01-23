@@ -77,10 +77,6 @@ if (validarTelefono()) {
 
     <?php
 
-    // while ($row = mysqli_fetch_assoc($continentes_result)) {
-    //     echo "$('.country-input').append($('<option>', { value: '" . $row["name"] . "', text: '" . str_replace("'", "\\'", $row["name"]) . "'}));";
-
-    // }
 
     foreach ($continentes_result as $pais) {
         echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
