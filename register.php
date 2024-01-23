@@ -118,7 +118,7 @@ if (validarTelefono()) {
         var botonCerrar = $("<span class='cerrar-notificacion'>&times;</span>");
         notificacion.append(botonCerrar);
         notificacion.append("<span class='mensaje-notificacion'>" + mensaje + "</span>");
-        $("#notification-container").prepend(notificacion); // Cambio aquí
+        $("#notification-container").prepend(notificacion);
     
         botonCerrar.click(function () {
             notificacion.fadeOut(500, function () {
