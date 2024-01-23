@@ -33,11 +33,6 @@
         <form method="post" >
             <div class="level-register">
                                
-            
-
-
-                <label for="city" class="city-lebel">Ciudad:</label>
-                <input type="text" id="city" name="city" class="city-input" required>
 
                 <div class="button-forum ">
                     <a class="volver-confirm-city">Volver</a>

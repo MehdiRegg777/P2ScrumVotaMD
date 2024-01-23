@@ -408,44 +408,150 @@ $(document).ready(function () {
        }
     }); 
 
-    $(".volver-confirm-city").click(function () {
-        $(".city-lebel, .city-input, .confirm-city, .volver-confirm-city").hide();
+    $(".level-register").on("click", ".volver-confirm-city", function () {
         $(".country-input").prop("disabled", false);
-        $(".city-input").val("");
-        $(".confirm-country, .volver-confirm-country").show();
+
+        $(".city-label").remove();
+        $(".city-input").remove();
+
+        var newContent = $("<div>")
+        .addClass("button-forum")
+        .append(
+            $("<a>")
+                .addClass("volver-confirm-country")
+                .text("Volver"),
+            $("<a>")
+                .addClass("confirm-country")
+                .text("Continuar")
+        );
+
+        // Reemplazar el contenido del div con la clase "button-forum"
+        $(".button-forum").replaceWith(newContent);
+
         scrollTo(".country-lebel");
 
      }); 
 
-    $(".confirm-city").click(function () {
+    $(".level-register").on("click", ".confirm-city", function () {
         if (validarCiudad()) {
-            $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .confirm-postal").show();
+
+            // Crear el label
+            var labelpostal = $("<label>")
+                .attr("for", "postal_code")
+                .addClass("postal-code-lebel")
+                .text("Código Postal:");
+
+            // Crear el input
+            var inputpostal = $("<input>")
+                .attr({
+                    type: "text",
+                    id: "postal_code",
+                    name: "postal_code"
+                })
+                .addClass("postal-code-input")
+                .prop("required", true);
+
+            // Agregar label e input al body (o al contenedor que prefieras)
+            $(".city-input").after(labelpostal, inputpostal);
+
             $(".city-input").prop("disabled", true);
-            $(".confirm-city, .volver-confirm-city").hide();
+
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-postal")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-postal")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
             scrollTo(".postal-code-lebel");
         } else {
             mostrarError("Ciudad no válida, no debe tener digitos. Por favor, inténtelo de nuevo.");
         }
     });
 
-    $(".confirm-postal").click(function () {
+    $(".level-register").on("click", ".volver-confirm-postal", function () {
+
+        $(".city-input").prop("disabled", false);
+
+        $(".postal-code-lebel").remove();
+        $(".postal-code-input").remove();
+
+        var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-city")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-city")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
+        scrollTo(".postal-code-input");
+
+    });
+
+    $(".level-register").on("click", ".confirm-postal", function () {
+
         if (validarPostal()) {
-            $(".volver-confirm-postal-2, .form-button").show();
+
+            var newContent = $("<div>")
+                .addClass("button-forum")
+                .append(
+                    $("<a>")
+                        .addClass("volver-confirm-postal-2")
+                        .text("Volver"),
+                    $("<button>")
+                        .attr("type", "submit")
+                        .addClass("form-button")
+                        .append(
+                            $("<i>")
+                                .addClass("fas fa-user-plus")
+                        )
+                        .append(" Registrar")
+                );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
+
             $(".postal-code-input").prop("disabled", true);
-            $(".volver-confirm-postal, .confirm-postal").hide();
+
             scrollTo(".postal-code-lebel");
         } else {
             mostrarError("Codigo postal invalido, son 5 digitos.");
         }
     });
 
-    $(".volver-confirm-postal").click(function () {
+    $(".level-register").on("click", ".volver-confirm-postal-2", function () {
 
-        $(".postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button").hide();
-        $(".city-input").prop("disabled", false);
-        $(".postal-code-input").val("");
-        $(".confirm-city, .volver-confirm-city").show();
-        scrollTo(".city-lebel");
+        $(".postal-code-input").prop("disabled", false);
+
+        var newContent = $("<div>")
+        .addClass("button-forum")
+        .append(
+            $("<a>")
+                .addClass("volver-confirm-postal")
+                .text("Volver"),
+            $("<a>")
+                .addClass("confirm-postal")
+                .text("Continuar")
+        );
+
+        // Reemplazar el contenido del div con la clase "button-forum"
+        $(".button-forum").replaceWith(newContent);
+
+        scrollTo(".postal-code-input");
 
     });
     
@@ -512,9 +618,7 @@ $(document).ready(function () {
 
     function validarTelefono() {
         var telefono = $("#phone").val();
-    
-        var expresionRegularTelefono = /^(\+\d{1,4}|00\d{1,4}|)?\d{10}$/;
-    
+        var expresionRegularTelefono = /^\d{10}$/;
         return expresionRegularTelefono.test(telefono);
     }
 
