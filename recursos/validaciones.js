@@ -289,58 +289,6 @@ $(document).ready(function () {
 
     });
 
-    $(".level-register").on("click", ".confirm-phone", function () {
-
-        if (validarTelefono()) {
-
-
-        // Crear el label de país
-            var countryLabel = $("<label>")
-                .attr("for", "country")
-                .addClass("country-label")
-                .text("País:");
-
-            // Crear el select de país
-            var countrySelect = $("<select>")
-                .attr({
-                    id: "country",
-                    name: "country"
-                })
-                .addClass("country-input")
-                .prop("required", true);
-
-            /* // Agregar opciones al select desde la base de datos
-            <?php
-            // Asegúrate de que las opciones se hayan cargado previamente en $continentes_result
-            while ($row = mysqli_fetch_assoc($continentes_result)) {
-                echo "$('.country-input').append($('<option>', { value: '" . $row["name"] . "', text: '" . $row["name"] . "'}));";
-            }
-            ?> */
-            // Agregar label y select al div con la clase "level-register"
-            $(".phone-input").after(countryLabel, countrySelect);
-
-            $(".phone-input").prop("disabled", true);
-
-            var newContent = $("<div>")
-            .addClass("button-forum")
-            .append(
-                $("<a>")
-                    .addClass("volver-confirm-country")
-                    .text("Volver"),
-                $("<a>")
-                    .addClass("confirm-country")
-                    .text("Continuar")
-            );
-
-            // Reemplazar el contenido del div con la clase "button-forum"
-            $(".button-forum").replaceWith(newContent);
-
-            scrollTo(".country-lebel");
-        } else {
-            mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
-        }
-    });
-
     $(".level-register").on("click", ".volver-confirm-country", function () {
         $(".phone-input").prop("disabled", false);
 
@@ -616,11 +564,7 @@ $(document).ready(function () {
         
     }
 
-    function validarTelefono() {
-        var telefono = $("#phone").val();
-        var expresionRegularTelefono = /^\d{10}$/;
-        return expresionRegularTelefono.test(telefono);
-    }
+    
 
     function validarPais() {
         var pais = $("#country").val();
@@ -659,3 +603,4 @@ $(document).ready(function () {
     
     
 });
+

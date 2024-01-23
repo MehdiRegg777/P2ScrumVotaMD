@@ -26,7 +26,12 @@
         $message .= 'Consulta realitzada: ' . $continentes_query;
         die($message);
     }
+    
+
+
+
 ?>
+        
 <main>
     <section>
         <h1>Registrar Usuario</h1>
@@ -49,6 +54,85 @@
 
 
 <script src='recursos/validaciones.js'></script>
+<script>            
+$(document).ready(function () {
+
+    $(".level-register").on("click", ".confirm-phone", function () {
+
+if (validarTelefono()) {
+
+
+    var countryLabel = $("<label>")
+        .attr("for", "country")
+        .addClass("country-label")
+        .text("País:");
+
+    var countrySelect = $("<select>")
+        .attr({
+            id: "country",
+            name: "country"
+        })
+        .addClass("country-input")
+        .prop("required", true);
+
+    <?php
+
+    // while ($row = mysqli_fetch_assoc($continentes_result)) {
+    //     echo "$('.country-input').append($('<option>', { value: '" . $row["name"] . "', text: '" . str_replace("'", "\\'", $row["name"]) . "'}));";
+
+    // }
+    
+    foreach ($continentes_result as $pais) {
+        echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
+    }
+
+    ?> 
+
+    $(".phone-input").after(countryLabel, countrySelect);
+
+    $(".phone-input").prop("disabled", true);
+
+    var newContent = $("<div>")
+    .addClass("button-forum")
+    .append(
+        $("<a>")
+            .addClass("volver-confirm-country")
+            .text("Volver"),
+        $("<a>")
+            .addClass("confirm-country")
+            .text("Continuar")
+    );
+
+    $(".button-forum").replaceWith(newContent);
+
+    scrollTo(".country-lebel");
+    } else {
+        mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
+    }
+    });
+
+    function validarTelefono() {
+        var telefono = $("#phone").val();
+        var expresionRegularTelefono = /^\d{10}$/;
+        return expresionRegularTelefono.test(telefono);
+    }
+
+    function mostrarError(mensaje) {
+        var notificacion = $("<div class='notificacion-error'></div>");
+        var botonCerrar = $("<span class='cerrar-notificacion'>&times;</span>");
+        notificacion.append(botonCerrar);
+        notificacion.append("<span class='mensaje-notificacion'>" + mensaje + "</span>");
+        $("#notification-container").prepend(notificacion); // Cambio aquí
+    
+        botonCerrar.click(function () {
+            notificacion.fadeOut(500, function () {
+                $(this).remove(); 
+            });
+        });
+    }
+
+});
+</script>
 
 </body>
 </html>
