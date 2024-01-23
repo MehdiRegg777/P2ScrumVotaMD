@@ -136,7 +136,7 @@ if (validarTelefono()) {
 });
 </script>
 <?php
-if (!empty($_POST)) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $username = $_POST["username"];
     $password = $_POST["password"];
