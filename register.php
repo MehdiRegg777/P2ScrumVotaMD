@@ -45,6 +45,7 @@
             <div class="buttons-registers">
                 <div class="button-inicio">
                     <a href="index.php"><i class="fas fa-home"></i> volver Inicio</a>
+                    <button type="submit" class="form-button"><i class="fas fa-user-plus"></i> Registrar</button>
                 </div>
             </div>
 
