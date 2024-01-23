@@ -1,9 +1,33 @@
 $(document).ready(function () {
 
-    // Oculta todos los elementos de entrada excepto el primer conjunto
-    $("  .volver-confirm-password-button, .confirm-password-button, .confirm-password-label, .confirm-password-input, .volver-confirm-confirm-password-button , .confirm-confirm-password-button, .email-lebel, .email-input, .confirm-email, .volver-confirm-email, .phone-level, .phone-input, .confirm-phone, .volver-confirm-phone, .country-lebel, .country-input, .confirm-country, .volver-confirm-country, .city-lebel, .city-input, .confirm-city , .volver-confirm-city , .postal-code-lebel, .postal-code-input, .volver-confirm-postal, .form-button, .volver-confirm-postal-2, .confirm-postal").hide();
+    var userLabel = $("<label>")
+        .attr("for", "username")
+        .addClass("user-label")
+        .text("Usuario:");
 
-    $(".confirm-username").click(function () {
+    // Crear el input de usuario
+    var userInput = $("<input>")
+        .attr({
+            type: "text",
+            id: "username",
+            name: "username"
+        })
+        .addClass("user-input")
+        .prop("required", true);
+
+    // Crear el botón de continuar
+    var continueButton = $("<div>")
+        .addClass("button-forum")
+        .append(
+            $("<a>")
+                .addClass("confirm-username")
+                .text("Continuar")
+        );
+
+    // Agregar label, input y botón al div con la clase "level-register"
+    $(".level-register").append(userLabel, userInput, continueButton);
+
+    $(".level-register").on("click", ".confirm-username", function () {
         
         if (validarUsuario()) {
             var label = $("<label>")
@@ -24,8 +48,21 @@ $(document).ready(function () {
             // Agregar label e input al body
             $("form .user-input").after(label, input);
             $(".user-input").prop("disabled", true);
-            $(".confirm-username").hide();
-            $(".volver-confirm-password-button, .confirm-password-button").show();
+
+
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-password-button")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-password-button")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
 
             scrollTo(".password-label");
         } else {
@@ -33,105 +70,338 @@ $(document).ready(function () {
         }
     });
 
-    $(".volver-confirm-password-button").click(function () {
-        
-
-        $(".password-label, .password-input, .confirm-password-button, .volver-confirm-password-button").hide();
+    $(".level-register").on("click", ".volver-confirm-password-button", function () {
         $(".user-input").prop("disabled", false);
-        $(".password-input").val("");
-        $(".confirm-username").show();
+        $(".password-label").remove();
+        $(".password-input").remove();
+
+        var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("confirm-username")
+                    .text("Continuar")
+            );
+
+        $(".button-forum").replaceWith(newContent);
         scrollTo(".user-label");
-
     });
-
-    $(".confirm-password-button").click(function () {
+    
+    $(".level-register").on("click", ".confirm-password-button", function () {
         if (validarContraseña()) {
-            $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button, .volver-confirm-confirm-password-button").show();
-            $(".password-input").prop("disabled", true);
-            $(".confirm-password-button, .volver-confirm-password-button").hide();
+            var confirmLabel = $("<label>")
+            .attr("for", "confirm_password")
+            .addClass("confirm-password-label")
+            .text("Confirmar Contraseña:");
+    
+        // Crear el input de confirmar contraseña
+        var confirmInput = $("<input>")
+            .attr({
+                type: "password",
+                id: "confirm_password",
+                name: "confirm_password"
+            })
+            .addClass("confirm-password-input")
+            .prop("required", true);
+    
+        // Agregar label e input al div con la clase "level-register"
+        $(".password-input").after(confirmLabel, confirmInput);            
+        $(".password-input").prop("disabled", true);
+
+
+
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-confirm-password-button")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-confirm-password-button")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
             scrollTo(".confirm-password-label");
         } else {
             mostrarError("Contraseña no válida. La contraseña debe tener una longitud mínima de 8 caracteres e incluir al menos una letra mayúscula, una letra minúscula y un número. Por favor, inténtelo de nuevo.");
         }
     });
 
-    $(".volver-confirm-confirm-password-button").click(function () {
-
-        $(".confirm-password-label, .confirm-password-input, .confirm-confirm-password-button, .volver-confirm-confirm-password-button").hide();
+    $(".level-register").on("click", ".volver-confirm-confirm-password-button", function () {
         $(".password-input").prop("disabled", false);
-        $(".confirm-password-input").val("");
-        $(".confirm-password-button, .volver-confirm-password-button").show();
+
+        $(".confirm-password-label").remove();
+        $(".confirm-password-input").remove();
+        var newContent = $("<div>")
+        .addClass("button-forum")
+        .append(
+            $("<a>")
+                .addClass("volver-confirm-password-button")
+                .text("Volver"),
+            $("<a>")
+                .addClass("confirm-password-button")
+                .text("Continuar")
+        );
+
+        // Reemplazar el contenido del div con la clase "button-forum"
+        $(".button-forum").replaceWith(newContent);
+
         scrollTo(".password-label");
 
     });
 
-    $(".confirm-confirm-password-button").click(function () {
+    $(".level-register").on("click", ".confirm-confirm-password-button", function () {
         if (validarConfirmacionContraseña()) {
-            $(".email-lebel, .email-input, .confirm-email, .volver-confirm-email").show();
+            // Crear el label de correo electrónico
+            var emailLabel = $("<label>")
+            .attr("for", "email")
+            .addClass("email-lebel")
+            .text("Correo Electrónico:");
+
+            // Crear el input de correo electrónico
+            var emailInput = $("<input>")
+            .attr({
+                type: "email",
+                id: "email",
+                name: "email"
+            })
+            .addClass("email-input")
+            .prop("required", true);
+
+            // Agregar label e input al div con la clase "level-register"
+            $(".confirm-password-input").after(emailLabel, emailInput);
+
             $(".confirm-password-input").prop("disabled", true);
-            $(".confirm-confirm-password-button, .volver-confirm-confirm-password-button").hide();
+            
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-email")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-email")
+                    .text("Continuar")
+            );
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
             scrollTo(".email-lebel");
         } else {
             mostrarError("La Contraseña no coincide. Por favor, inténtelo de nuevo.");
         }
     });
 
-    $(".volver-confirm-email").click(function () {
-
-        $(".email-lebel, .email-input, .confirm-email, .volver-confirm-email").hide();
+    $(".level-register").on("click", ".volver-confirm-email", function () {
         $(".confirm-password-input").prop("disabled", false);
-        $(".email-input").val("");
-        $(".confirm-confirm-password-button, .volver-confirm-confirm-password-button").show();
+
+        $(".email-lebel").remove();
+        $(".email-input").remove();
+
+        var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-confirm-password-button")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-confirm-password-button")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
         scrollTo(".confirm-password-label");
 
     });
 
-    $(".confirm-email").click(function () {
+
+    $(".level-register").on("click", ".confirm-email", function () {
+
         if (validarCorreoElectronico()) {
-            $(".phone-level, .phone-input, .confirm-phone, .volver-confirm-phone").show();
+
+            // Crear el label de teléfono
+            var phoneLabel = $("<label>")
+            .attr("for", "phone")
+            .addClass("phone-label")
+            .text("Teléfono (Sin codigo del país):");
+
+            // Crear el input de teléfono
+            var phoneInput = $("<input>")
+                .attr({
+                    type: "tel",
+                    id: "phone",
+                    name: "phone"
+                })
+                .addClass("phone-input")
+                .prop("required", true);
+
+            // Agregar label e input al div con la clase "level-register"
+            $(".email-input").after(phoneLabel, phoneInput);
+
             $(".email-input").prop("disabled", true);
-            $(".confirm-email, .volver-confirm-email").hide();
+
+
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-phone")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-phone")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
             scrollTo(".phone-level");
         } else {
             mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
         }
     });
 
-    $(".volver-confirm-phone").click(function () {
+    $(".level-register").on("click", ".volver-confirm-phone", function () {
 
-        $(".phone-level, .phone-input, .confirm-phone, .volver-confirm-phone").hide();
         $(".email-input").prop("disabled", false);
-        $(".phone-input").val("");
-        $(".confirm-email, .volver-confirm-email").show();
+
+        $(".phone-label").remove();
+        $(".phone-input").remove();
+        
+        var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-email")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-email")
+                    .text("Continuar")
+            );
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
         scrollTo(".email-lebel");
 
     });
 
-    $(".confirm-phone").click(function () {
+    $(".level-register").on("click", ".confirm-phone", function () {
+
         if (validarTelefono()) {
-            $(".country-lebel, .country-input, .confirm-country, .volver-confirm-country").show();
+
+
+        // Crear el label de país
+            var countryLabel = $("<label>")
+                .attr("for", "country")
+                .addClass("country-label")
+                .text("País:");
+
+            // Crear el select de país
+            var countrySelect = $("<select>")
+                .attr({
+                    id: "country",
+                    name: "country"
+                })
+                .addClass("country-input")
+                .prop("required", true);
+
+            /* // Agregar opciones al select desde la base de datos
+            <?php
+            // Asegúrate de que las opciones se hayan cargado previamente en $continentes_result
+            while ($row = mysqli_fetch_assoc($continentes_result)) {
+                echo "$('.country-input').append($('<option>', { value: '" . $row["name"] . "', text: '" . $row["name"] . "'}));";
+            }
+            ?> */
+            // Agregar label y select al div con la clase "level-register"
+            $(".phone-input").after(countryLabel, countrySelect);
+
             $(".phone-input").prop("disabled", true);
-            $(".confirm-phone, .volver-confirm-phone").hide();
+
+            var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-country")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-country")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
             scrollTo(".country-lebel");
         } else {
             mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
         }
     });
 
-    $(".volver-confirm-country").click(function () {
-
-        $(".country-lebel, .country-input, .confirm-country, .volver-confirm-country").hide();
+    $(".level-register").on("click", ".volver-confirm-country", function () {
         $(".phone-input").prop("disabled", false);
-        $(".country-input").val("");
-        $(".confirm-phone, .volver-confirm-phone").show();
+
+        $(".country-label").remove();
+        $(".country-input").remove();      
+
+        var newContent = $("<div>")
+        .addClass("button-forum")
+        .append(
+            $("<a>")
+                .addClass("volver-confirm-phone")
+                .text("Volver"),
+            $("<a>")
+                .addClass("confirm-phone")
+                .text("Continuar")
+        );
+
+        // Reemplazar el contenido del div con la clase "button-forum"
+        $(".button-forum").replaceWith(newContent);
+
         scrollTo(".phone-level");
     });
 
-    $(".confirm-country").click(function () {
+    $(".level-register").on("click", ".confirm-country", function () {
+
        if (validarPais()) {
-           $(".city-lebel, .city-input, .confirm-city, .volver-confirm-city").show();
+            // Crear el label de ciudad
+            var cityLabel = $("<label>")
+                .attr("for", "city")
+                .addClass("city-label")
+                .text("Ciudad:");
+
+            // Crear el input de ciudad
+            var cityInput = $("<input>")
+                .attr({
+                    type: "text",
+                    id: "city",
+                    name: "city"
+                })
+                .addClass("city-input")
+                .prop("required", true);
+
+            // Agregar label e input al div con la clase "level-register"
+            $(".country-input").after(cityLabel, cityInput);
+
            $(".country-input").prop("disabled", true);
-           $(".confirm-country, .volver-confirm-country").hide();
+
+           var newContent = $("<div>")
+            .addClass("button-forum")
+            .append(
+                $("<a>")
+                    .addClass("volver-confirm-city")
+                    .text("Volver"),
+                $("<a>")
+                    .addClass("confirm-city")
+                    .text("Continuar")
+            );
+
+            // Reemplazar el contenido del div con la clase "button-forum"
+            $(".button-forum").replaceWith(newContent);
+
            scrollTo(".city-lebel");
        } else {
            mostrarError("País no válido. Por favor, inténtelo de nuevo.");
@@ -250,7 +520,7 @@ $(document).ready(function () {
 
     function validarPais() {
         var pais = $("#country").val();
-        return pais.trim() !== "";
+        return true
     }
 
     function validarCiudad() {
