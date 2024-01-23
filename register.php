@@ -35,7 +35,11 @@
 <main>
     <section>
         <h1>Registrar Usuario</h1>
-        <form method="POST" >
+        <form method="post" action="">
+
+            <input type="hidden" name="hidden_usuario" value="" />
+            <input type="hidden" name="hidden_password" value="" />
+
             <div class="level-register">
 
             </div>
@@ -45,7 +49,7 @@
             <div class="buttons-registers">
                 <div class="button-inicio">
                     <a href="index.php"><i class="fas fa-home"></i> volver Inicio</a>
-                    <button type="submit" class="form-button"><i class="fas fa-user-plus"></i> Registrar</button>
+                    <input type="submit" class="form-button" value="enviar2"><i class="fas fa-user-plus"></i> Registrar</imput>
                 </div>
             </div>
 
@@ -137,7 +141,7 @@ if (validarTelefono()) {
 });
 </script>
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
     
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -148,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST["city"];
     $postal_code = $_POST["postal_code"];
 
-    echo "<pre>".print_r($_POST,true)."</pre>";
+    echo "<br>todo el post:<pre>".print_r($_POST,true)."</pre><br><br>";
 
     echo "Usuario: " . $_POST["username"] . "<br>";
     echo "Contraseña: " . $password . "<br>";
