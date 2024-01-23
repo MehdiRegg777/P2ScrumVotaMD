@@ -35,7 +35,7 @@
 <main>
     <section>
         <h1>Registrar Usuario</h1>
-        <form method="post" >
+        <form method="POST" >
             <div class="level-register">
 
             </div>
@@ -135,6 +135,31 @@ if (validarTelefono()) {
 
 });
 </script>
+<?php
+if (!empty($_POST)) {
+    
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $country = $_POST["country"];
+    $city = $_POST["city"];
+    $postal_code = $_POST["postal_code"];
 
+    echo "<pre>".print_r($_POST,true)."</pre>";
+
+    echo "Usuario: " . $_POST["username"] . "<br>";
+    echo "Contraseña: " . $password . "<br>";
+    echo "Confirmar Contraseña: " . $confirm_password . "<br>";
+    echo "Correo Electrónico: " . $email . "<br>";
+    echo "Teléfono: " . $phone . "<br>";
+    echo "País: " . $country . "<br>";
+    echo "Ciudad: " . $city . "<br>";
+    echo "Código Postal: " . $postal_code . "<br>";
+
+
+} 
+?>
 </body>
 </html>
