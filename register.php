@@ -11,9 +11,6 @@
 </head>
 <body>
 <?php
- 
-
-
     
     try {
         $hostname = "localhost";
@@ -112,9 +109,8 @@ if (validarTelefono()) {
                     type: "text",
                     id: "phone",
                     name: "phone",
-                    value: $("#phone").val()  // Puedes establecer el valor según la entrada del usuario
+                    value: $("#phone").val()  
                 }).hide(); 
-                  // Opcionalmente oculta el campo si no quieres que sea visible en el formulario
 
                   $("form").append(phoneInputField);
 
