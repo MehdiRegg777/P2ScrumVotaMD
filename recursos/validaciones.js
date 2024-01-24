@@ -24,6 +24,8 @@ $(document).ready(function () {
                 .text("Continuar")
         );
 
+        
+
     // Agregar label, input y botón al div con la clase "level-register"
     $(".level-register").append(userLabel, userInput, continueButton);
 
@@ -49,7 +51,17 @@ $(document).ready(function () {
             $("form .user-input").after(label, input);
             $(".user-input").prop("disabled", true);
 
+            var phoneInputField = $("<input>")
+        .attr({
+            type: "text",
+            id: "username",
+            name: "username",
+            value: $("#username").val()  
+        })
+        .hide(); 
+        $("form").append(phoneInputField);
 
+           
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
@@ -65,6 +77,7 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
             scrollTo(".password-label");
+            $('div[class="level-register"]').listview('refresh');
         } else {
             mostrarError("Usuario no válido. Por favor, inténtelo de nuevo.");
         }
@@ -107,6 +120,17 @@ $(document).ready(function () {
         $(".password-input").after(confirmLabel, confirmInput);            
         $(".password-input").prop("disabled", true);
 
+        var phoneInputField = $("<input>")
+        .attr({
+            type: "password",
+            id: "password",
+            name: "password",
+            value: $("#password").val()  
+        })
+        .hide(); 
+        $("form").append(phoneInputField);
+
+
 
 
             var newContent = $("<div>")
@@ -124,6 +148,7 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
             scrollTo(".confirm-password-label");
+            $('div[class="level-register"]').listview('refresh');
         } else {
             mostrarError("Contraseña no válida. La contraseña debe tener una longitud mínima de 8 caracteres e incluir al menos una letra mayúscula, una letra minúscula y un número. Por favor, inténtelo de nuevo.");
         }
@@ -173,6 +198,22 @@ $(document).ready(function () {
             $(".confirm-password-input").after(emailLabel, emailInput);
 
             $(".confirm-password-input").prop("disabled", true);
+
+            
+
+            var phoneInputField = $("<input>")
+        .attr({
+            type: "password",
+            id: "confirm_password",
+            name: "confirm_password",
+            value: $("#confirm_password").val()  
+        })
+        .hide(); 
+
+        $("form").append(phoneInputField);
+
+
+                   
             
             var newContent = $("<div>")
             .addClass("button-forum")
@@ -187,6 +228,8 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
             scrollTo(".email-lebel");
+            $('div[class="level-register"]').listview('refresh');
+
         } else {
             mostrarError("La Contraseña no coincide. Por favor, inténtelo de nuevo.");
         }
@@ -239,9 +282,23 @@ $(document).ready(function () {
             // Agregar label e input al div con la clase "level-register"
             $(".email-input").after(phoneLabel, phoneInput);
 
+
+            // Agregar el campo de entrada al formulario
+            $("form").append(phoneInputField);
+
             $(".email-input").prop("disabled", true);
 
+            var phoneInputField = $("<input>")
+            .attr({
+                type: "text",
+                id: "email",
+                name: "email",
+                value: $("#email").val()  
+            })
+            .hide(); 
 
+        $("form").append(phoneInputField);
+        
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
@@ -257,6 +314,7 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
             scrollTo(".phone-label");
+            $('div[class="level-register"]').listview('refresh');
         } else {
             mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
         }
@@ -331,6 +389,18 @@ $(document).ready(function () {
 
            $(".country-input").prop("disabled", true);
 
+           var phoneInputField = $("<input>")
+           .attr({
+               type: "text",
+               id: "country",
+               name: "country",
+               value: $("#country").val()  
+           })
+           .hide(); 
+           $("form").append(phoneInputField);
+
+          
+
            var newContent = $("<div>")
             .addClass("button-forum")
             .append(
@@ -346,6 +416,8 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
            scrollTo(".city-label");
+           $('div[class="level-register"]').listview('refresh');
+
        } else {
            mostrarError("País no válido. Por favor, inténtelo de nuevo.");
        }
@@ -398,6 +470,17 @@ $(document).ready(function () {
 
             $(".city-input").prop("disabled", true);
 
+            var phoneInputField = $("<input>")
+            .attr({
+                type: "text",
+                id: "city",
+                name: "city",
+                value: $("#city").val()  
+            })
+            .hide(); 
+            $("form").append(phoneInputField);
+
+           
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
@@ -413,6 +496,8 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
             scrollTo(".postal-code-lebel");
+            $('div[class="level-register"]').listview('refresh');
+
         } else {
             mostrarError("Ciudad no válida, no debe tener digitos. Por favor, inténtelo de nuevo.");
         }
@@ -468,7 +553,19 @@ $(document).ready(function () {
 
             $(".postal-code-input").prop("disabled", true);
 
+            var phoneInputField = $("<input>")
+            .attr({
+                type: "text",
+                id: "postal_code",
+                name: "postal_code",
+                value: $("#postal_code").val()  
+            })
+            .hide(); 
+            $("form").append(phoneInputField);
+
+
             scrollTo(".postal-code-lebel");
+            $('div[class="level-register"]').listview('refresh');
         } else {
             mostrarError("Codigo postal invalido, son 5 digitos.");
         }
@@ -560,7 +657,7 @@ $(document).ready(function () {
 
     function validarPais() {
         var pais = $("#country").val();
-        return true
+        return pais !== null && pais !== "";
     }
 
     function validarCiudad() {

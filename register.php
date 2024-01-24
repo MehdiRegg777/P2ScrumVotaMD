@@ -94,6 +94,19 @@ if (validarTelefono()) {
 
     $(".phone-input").prop("disabled", true);
 
+      // Crear dinámicamente un input para phone
+      var phoneInputField = $("<input>")
+                .attr({
+                    type: "text",
+                    id: "phone",
+                    name: "phone",
+                    value: $("#phone").val()  // Puedes establecer el valor según la entrada del usuario
+                }).hide(); 
+                  // Opcionalmente oculta el campo si no quieres que sea visible en el formulario
+
+                  $("form").append(phoneInputField);
+
+
     var newContent = $("<div>")
     .addClass("button-forum")
     .append(
@@ -108,14 +121,15 @@ if (validarTelefono()) {
     $(".button-forum").replaceWith(newContent);
 
     scrollTo(".country-label");
+    $('div[class="level-register"]').listview('refresh');
     } else {
-        mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo.");
+        mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo. Deben ser 9 dígitos");
     }
     });
 
     function validarTelefono() {
         var telefono = $("#phone").val();
-        var expresionRegularTelefono = /^\d{10}$/;
+        var expresionRegularTelefono = /^\d{9}$/;
         return expresionRegularTelefono.test(telefono);
     }
 
@@ -142,6 +156,7 @@ if (validarTelefono()) {
 });
 </script>
 <?php
+error_reporting(0);
 if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
     
     $username = $_POST["username"];
@@ -153,16 +168,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
     $city = $_POST["city"];
     $postal_code = $_POST["postal_code"];
 
-    echo "<br>todo el post:<pre>".print_r($_POST,true)."</pre><br><br>";
+    echo "<pre>".print_r($_POST,true)."</pre><br><br>";
 
-    echo "Usuario: " . $_POST["username"] . "<br>";
-    echo "Contraseña: " . $password . "<br>";
-    echo "Confirmar Contraseña: " . $confirm_password . "<br>";
-    echo "Correo Electrónico: " . $email . "<br>";
-    echo "Teléfono: " . $phone . "<br>";
-    echo "País: " . $country . "<br>";
-    echo "Ciudad: " . $city . "<br>";
-    echo "Código Postal: " . $postal_code . "<br>";
 
 
 } 
