@@ -54,8 +54,8 @@ class BasePhpTest {
 	    let firefoxOptions = new firefox.Options();
 	    let chromeOptions = new chrome.Options();
 	    if( this.headless ) {
-	        console.log("Running Headless Tests...")
-	        firefoxOptions = new firefox.Options().headless();
+	        console.log("Running Headless Tests...");
+	        //firefoxOptions = new firefox.Options().headless();
 	        chromeOptions = new chrome.Options().addArguments('--headless=new');
 	    }
 	    if( this.browser=="chrome" ) {

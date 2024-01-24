@@ -56,7 +56,7 @@
                 <?php
                     if (!empty($_POST)) {
                 ?>
-                <a href="register.php"><i class="fas fa-user-plus"></i> Nuevo usuario</a>
+                <a href="#"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                 <?php
                     }
                 ?>
