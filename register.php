@@ -164,6 +164,9 @@ if (validarTelefono()) {
     }
 
 });
+function cerrarNotificacion() {
+    document.getElementById('notification-registrado').innerHTML = '';
+}
 </script>
 <?php
 error_reporting(0);
@@ -175,8 +178,11 @@ try {
     $pw = "aws27mehdidiego";
     $pdo = new PDO ("mysql:host=$hostname;dbname=$dbname","$username","$pw");
 } catch (PDOException $e) {
-
-    echo "Failed to get DB handle: " . $e->getMessage() . "\n";
+    $notification_message = "Failed to get DB handle: " . $e->getMessage() . "\n";
+    //echo "Failed to get DB handle: " . $e->getMessage() . "\n";
+            echo "<script>
+            document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
+        </script>";
     exit;
 }
 
@@ -215,8 +221,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
         $user_exists_stmt->execute();
 
         if ($user_exists_stmt->rowCount() > 0) {
-
-            echo "<br>El usuario con ese número de teléfono o email ya existe.";
+            $notification_message = "El usuario con ese número de teléfono o email ya existe.";
+            //echo "<br>El usuario con ese número de teléfono o email ya existe.";
+            echo "<script>
+                    document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
+                </script>";
             exit;
         }
 
@@ -239,16 +248,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
 
         if ($insert_user_stmt->errorCode() != 0) {
             $error_info = $insert_user_stmt->errorInfo();
-
-            echo "Error al registrar el usuario: " . $error_info[2]; 
+            $notification_message = "Error al registrar el usuario: " . $error_info[2];
+            //echo "Error al registrar el usuario: " . $error_info[2]; 
         } else {
-
-            echo "Usuario registrado con éxito.";
+            $notification_message = "Usuario registrado con éxito.";
+            //echo "Usuario registrado con éxito.";
         }
 
     } else {
-
-        echo "Error al obtener el phonecode del país.";
+        $notification_message = "Error al obtener el phonecode del país.";
+        //echo "Error al obtener el phonecode del país.";
+        echo "<script>
+            document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
+        </script>";
         exit;
     }
 

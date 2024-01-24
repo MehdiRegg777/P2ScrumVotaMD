@@ -201,7 +201,7 @@ footer {
 }
 
 
-/*Notificaciones*/
+/*               Notificaciones inputs         */
 
 
 
@@ -221,6 +221,33 @@ footer {
 .notificacion-error {
     background-color: #ffcccc;
     border: 1px solid #cc0000;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+/*                    Notificaciones bbdd            */
+
+
+
+.cerrar-notificacion2 {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion2 {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
+.notificacion-error2 {
+    background-color: #9099a2;
+    border: 1px solid #96858f;
     padding: 10px;
     margin: 30px 0;
     position: relative;
