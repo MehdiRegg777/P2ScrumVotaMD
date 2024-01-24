@@ -22,7 +22,7 @@
     <section>
         <h2>Acciones</h2>
         <div class="button-container">
-            <a href="#"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+            <a href="#" disabled><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             <a href="register.php"><i class="fas fa-user-plus"></i> Registrarse</a>
         </div>
     </section>

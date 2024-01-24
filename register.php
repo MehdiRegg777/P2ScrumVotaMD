@@ -56,7 +56,7 @@
                 <?php
                     if (!empty($_POST)) {
                 ?>
-                <a href="#"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                <a href="#" disabled><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                 <?php
                     }
                 ?>
