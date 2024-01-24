@@ -263,7 +263,7 @@ create table if not exists `user`(
 	`user_name` varchar(100) NOT NULL,
 	`phone_number` varchar(15) NOT NULL,
 	`email` varchar(80) NOT NULL,
-	`password` varchar(20) NOT NULL,
+	`password` varchar(200) NOT NULL,
 	`registered` datetime DEFAULT NULL,
 	`country_id` int DEFAULT NULL,
 	`city` varchar(50) DEFAULT NULL,
