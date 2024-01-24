@@ -253,6 +253,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
         } else {
             $notification_message = "Usuario registrado con éxito.";
             //echo "Usuario registrado con éxito.";
+            echo "<script>
+            document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
+        </script>";
         }
 
     } else {
