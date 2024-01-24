@@ -41,16 +41,28 @@
     <section>
         <h1>Registrar Usuario</h1>
         <form method="post" action="">
-
+            <?php
+                if (empty($_POST)) {
+            ?>
             <div class="level-register">
 
             </div>
+            <?php
+                }
+            ?>
             <div id="notification-container"></div>
             <div id="notification-registrado"></div>
 
             <div class="buttons-registers">
                 <div class="button-inicio">
-                    <a href="index.php"><i class="fas fa-home"></i> volver Inicio</a>
+                    <?php
+                        if (!empty($_POST)) {
+                    ?>
+                    <a href="register.php"><i class="fas fa-user-plus"></i> Nuevo usuario</a>
+                    <?php
+                        }
+                    ?>
+                    <a href="index.php"><i class="fas fa-home"></i> Volver Inicio</a>
                 </div>
             </div>
 
