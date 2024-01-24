@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+
     var userLabel = $("<label>")
         .attr("for", "username")
         .addClass("user-label")
