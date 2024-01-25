@@ -13,10 +13,15 @@
 <?php
     
     try {
-        $hostname = "localhost";
+        // $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "aws27";
-        $pw = "aws27mehdidiego";
+        // $username = "aws27";
+        // $pw = "aws27mehdidiego";
+
+        // Datos Local
+        $hostname = "localhost";
+        $username = "tianleyin";
+        $pw = "Sinlove2004_";
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -56,7 +61,7 @@
                 <?php
                     if (!empty($_POST)) {
                 ?>
-                <a ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                <a href="login.php"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                 <?php
                     }
                 ?>
@@ -172,10 +177,15 @@ function cerrarNotificacion() {
 error_reporting(0);
 
 try {
-    $hostname = "localhost";
+    // $hostname = "localhost";
     $dbname = "vota_DDBB";
-    $username = "aws27";
-    $pw = "aws27mehdidiego";
+    // $username = "aws27";
+    // $pw = "aws27mehdidiego";
+
+    $hostname = "localhost";
+    $username = "tianleyin";
+    $pw = "Sinlove2004_";
+
     $pdo = new PDO ("mysql:host=$hostname;dbname=$dbname","$username","$pw");
 } catch (PDOException $e) {
     $notification_message = "Failed to get DB handle: " . $e->getMessage() . "\n";

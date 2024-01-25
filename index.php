@@ -20,9 +20,9 @@
     </section>
 
     <section>
-        <h2>Acciones</h2>
+        <h2>Acciones:</h2>
         <div class="button-container">
-            <a ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+            <a href="login.php"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             <a href="register.php"><i class="fas fa-user-plus"></i> Registrarse</a>
         </div>
     </section>
