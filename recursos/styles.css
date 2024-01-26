@@ -1,0 +1,264 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #D5D5D5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+height: 100%;
+max-width: 800px;
+margin: 40px auto;
+background-color: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+section p {
+    text-align: justify;
+    font-size: 1.2em; 
+    line-height: 1.5; 
+    margin-left: 3%;
+    margin-right: 3%;
+
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container a {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.button-container a:hover {
+    background-color: #9099A2;
+}
+
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px; 
+    color: #333; 
+    text-align: justify;
+    font-size: 1.2em; 
+    line-height: 1.5; 
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+form input {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box; 
+}
+
+form button.form-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+form button.form-button:hover {
+    background-color: #9099A2;
+}
+
+.button-forum {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:10px;    
+    margin-bottom: 20px;
+}
+
+.button-forum a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.button-forum a:hover {
+    background-color: #9099A2;
+    cursor: pointer;
+}
+
+.buttons-registers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button {
+    margin-right: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.button-inicio {
+    margin-left: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.form-button:hover,
+.button-inicio a:hover {
+    background-color: #9099A2;
+}
+
+.form-button,
+.button-inicio a {    
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #9099;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+    main {
+        height: 100%;
+        margin: 40px 10% ;
+        
+        }
+
+}
+
+
+/*               Notificaciones inputs         */
+
+
+
+.cerrar-notificacion {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
+.notificacion-error {
+    background-color: #ffcccc;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+/*                    Notificaciones bbdd            */
+
+
+
+.cerrar-notificacion2 {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion2 {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
+.notificacion-error2 {
+    background-color: #9099a2;
+    border: 1px solid #96858f;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+/*Control de imagen de errors forbiden*/
+
+.errorpng {
+    max-width: 50%;
+    height: auto;
+    margin-top: 15px;
+}
