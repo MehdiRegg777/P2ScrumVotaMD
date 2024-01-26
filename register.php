@@ -106,7 +106,7 @@ if (validarTelefono()) {
 
     $(".phone-input").after(countryLabel, countrySelect);
 
-    $(".phone-input").prop("disabled", true);
+    //$(".phone-input").prop("disabled", true);
 
       // Crear dinámicamente un input para phone
       var phoneInputField = $("<input>")
@@ -222,7 +222,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
 
         // Formar el número de teléfono completo
         $full_phone = "+" . $phonecode . $phone;
-
         // Verificar si el usuario ya existe en la tabla 'user'
         $user_exists_query = "SELECT user_id FROM user WHERE phone_number=:full_phone OR email=:email";
         $user_exists_stmt = $pdo->prepare($user_exists_query);

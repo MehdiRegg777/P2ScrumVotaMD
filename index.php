@@ -8,10 +8,10 @@
     <link href="recursos/styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="recursos/logo.png" />
 </head>
-<body>
-
-
-
+<body id="index">
+<?php
+include_once("recursos/header.php");
+?>
 <main>
     <section>
         <h1>Bienvenido Al Portal VotaYa</h1>
@@ -27,7 +27,8 @@
         </div>
     </section>
 </main>
-
-
+<?php
+include_once("recursos/footer.php");
+?>
 </body>
 </html>

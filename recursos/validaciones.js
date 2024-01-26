@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     var userLabel = $("<label>")
         .attr("for", "username")
         .addClass("user-label")
@@ -51,7 +49,7 @@ $(document).ready(function () {
 
             // Agregar label e input al body
             $("form .user-input").after(label, input);
-            $(".user-input").prop("disabled", true);
+            $(".user-input");
 
             var phoneInputField = $("<input>")
         .attr({
@@ -67,9 +65,6 @@ $(document).ready(function () {
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-password-button")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-password-button")
                     .text("Continuar")
@@ -101,6 +96,8 @@ $(document).ready(function () {
         $(".button-forum").replaceWith(newContent);
     });
     
+
+    // Confirm password
     $(".level-register").on("click", ".confirm-password-button", function () {
         if (validarContraseña()) {
             var confirmLabel = $("<label>")
@@ -120,7 +117,6 @@ $(document).ready(function () {
     
         // Agregar label e input al div con la clase "level-register"
         $(".password-input").after(confirmLabel, confirmInput);            
-        $(".password-input").prop("disabled", true);
 
         var phoneInputField = $("<input>")
         .attr({
@@ -138,9 +134,6 @@ $(document).ready(function () {
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-confirm-password-button")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-confirm-password-button")
                     .text("Continuar")
@@ -164,9 +157,6 @@ $(document).ready(function () {
         var newContent = $("<div>")
         .addClass("button-forum")
         .append(
-            $("<a>")
-                .addClass("volver-confirm-password-button")
-                .text("Volver"),
             $("<a>")
                 .addClass("confirm-password-button")
                 .text("Continuar")
@@ -198,9 +188,6 @@ $(document).ready(function () {
 
             // Agregar label e input al div con la clase "level-register"
             $(".confirm-password-input").after(emailLabel, emailInput);
-
-            $(".confirm-password-input").prop("disabled", true);
-
             
 
             var phoneInputField = $("<input>")
@@ -214,15 +201,9 @@ $(document).ready(function () {
 
         $("form").append(phoneInputField);
 
-
-                   
-            
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-email")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-email")
                     .text("Continuar")
@@ -237,6 +218,8 @@ $(document).ready(function () {
         }
     });
 
+
+    // Confirmar email
     $(".level-register").on("click", ".volver-confirm-email", function () {
         $(".confirm-password-input").prop("disabled", false);
 
@@ -246,9 +229,6 @@ $(document).ready(function () {
         var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-confirm-password-button")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-confirm-password-button")
                     .text("Continuar")
@@ -288,7 +268,7 @@ $(document).ready(function () {
             // Agregar el campo de entrada al formulario
             $("form").append(phoneInputField);
 
-            $(".email-input").prop("disabled", true);
+            $(".email-input");
 
             var phoneInputField = $("<input>")
             .attr({
@@ -304,9 +284,6 @@ $(document).ready(function () {
             var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-phone")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-phone")
                     .text("Continuar")
@@ -324,7 +301,6 @@ $(document).ready(function () {
 
     $(".level-register").on("click", ".volver-confirm-phone", function () {
 
-        $(".email-input").prop("disabled", false);
 
         $(".phone-label").remove();
         $(".phone-input").remove();
@@ -332,9 +308,6 @@ $(document).ready(function () {
         var newContent = $("<div>")
             .addClass("button-forum")
             .append(
-                $("<a>")
-                    .addClass("volver-confirm-email")
-                    .text("Volver"),
                 $("<a>")
                     .addClass("confirm-email")
                     .text("Continuar")
@@ -346,7 +319,6 @@ $(document).ready(function () {
     });
 
     $(".level-register").on("click", ".volver-confirm-country", function () {
-        $(".phone-input").prop("disabled", false);
 
         $(".country-label").remove();
         $(".country-input").remove();      
@@ -354,9 +326,6 @@ $(document).ready(function () {
         var newContent = $("<div>")
         .addClass("button-forum")
         .append(
-            $("<a>")
-                .addClass("volver-confirm-phone")
-                .text("Volver"),
             $("<a>")
                 .addClass("confirm-phone")
                 .text("Continuar")
@@ -389,7 +358,6 @@ $(document).ready(function () {
             // Agregar label e input al div con la clase "level-register"
             $(".country-input").after(cityLabel, cityInput);
 
-           $(".country-input").prop("disabled", true);
 
            var phoneInputField = $("<input>")
            .attr({
@@ -435,9 +403,6 @@ $(document).ready(function () {
         .addClass("button-forum")
         .append(
             $("<a>")
-                .addClass("volver-confirm-country")
-                .text("Volver"),
-            $("<a>")
                 .addClass("confirm-country")
                 .text("Continuar")
         );
@@ -470,7 +435,6 @@ $(document).ready(function () {
             // Agregar label e input al body (o al contenedor que prefieras)
             $(".city-input").after(labelpostal, inputpostal);
 
-            $(".city-input").prop("disabled", true);
 
             var phoneInputField = $("<input>")
             .attr({
@@ -553,7 +517,6 @@ $(document).ready(function () {
             $(".button-forum").replaceWith(newContent);
 
 
-            $(".postal-code-input").prop("disabled", true);
 
             var phoneInputField = $("<input>")
             .attr({
