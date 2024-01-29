@@ -43,7 +43,7 @@
 <main>
     <section>
         <h1>Registrar Usuario</h1>
-        <form method="post" action="">
+        <form method="post" id="registration-form">
             <?php
                 if (empty($_POST)) {
             ?>
@@ -123,9 +123,6 @@ if (validarTelefono()) {
     var newContent = $("<div>")
     .addClass("button-forum")
     .append(
-        $("<a>")
-            .addClass("volver-confirm-country")
-            .text("Volver"),
         $("<a>")
             .addClass("confirm-country")
             .text("Continuar")

@@ -177,6 +177,10 @@ form button.form-button:hover {
 }
 
 /* login.php */
+#login_body {
+    min-height: 95vh;
+}
+
 #login form {
     text-align: center;
 }
@@ -253,7 +257,7 @@ form button.form-button:hover {
 .navbar {
     text-align: center;
     padding: 0.8em 0;
-    background-color: #96858f;
+    background-color: #635a5f;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -301,7 +305,7 @@ form button.form-button:hover {
 footer {
     text-align: center;
     padding: 5px 0;
-    background-color: #96858f;
+    background-color: #635a5f;
     color: #fff;
     width: 100%;
 }
