@@ -77,65 +77,73 @@
 <script>            
 $(document).ready(function () {
 
-    $(".level-register").on("click", ".confirm-phone", function () {
+    $(".level-register").on("keydown", ".phone-input", function (event) {
+    // Verificar si la tecla presionada es Tab, Enter o un clic
+    if (event.key === 'Tab' || event.key === 'Enter') {
+        console.log("confirm-phone");
 
-if (validarTelefono()) {
+        if (validarTelefono()) {
 
+            localStorage.setItem('phone', $(this).val());
+            document.cookie = "phone="+ $(this).val();
 
-    var countryLabel = $("<label>")
-        .attr("for", "country")
-        .addClass("country-label")
-        .text("País:");
+            $(this).nextAll().remove();
 
-    var countrySelect = $("<select>")
-        .attr({
-            id: "country",
-            name: "country"
-        })
-        .addClass("country-input")
-        .prop("required", true);
+            var countryLabel = $("<label>")
+                .attr("for", "country")
+                .addClass("country-label")
+                .text("País:");
 
-    <?php
-
-
-    foreach ($resultados as $pais) {
-        echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
-    }
-
-    ?> 
-
-    $(".phone-input").after(countryLabel, countrySelect);
-
-    //$(".phone-input").prop("disabled", true);
-
-      // Crear dinámicamente un input para phone
-      var phoneInputField = $("<input>")
+            var countrySelect = $("<select>")
                 .attr({
-                    type: "text",
-                    id: "phone",
-                    name: "phone",
-                    value: $("#phone").val()  
-                }).hide(); 
+                    id: "country",
+                    name: "country"
+                })
+                .addClass("country-input")
+                .prop("required", true);
 
-                  $("form").append(phoneInputField);
+            <?php
+            foreach ($resultados as $pais) {
+                echo 'countrySelect.append("<option value=\'" + \'' . $pais['name'] . '\' + "\' data-pref=\'" + \'' . $pais['name'] . '\' + "\'>" + \'' . $pais['name'] . '\' + "</option>");';
+            }
+            ?> 
+
+            $(".phone-input").after(countryLabel, countrySelect);
 
 
-    var newContent = $("<div>")
-    .addClass("button-forum")
-    .append(
-        $("<a>")
-            .addClass("confirm-country")
-            .text("Continuar")
-    );
+            var newContent = $("<div>")
+                .addClass("button-forum")
+                .append(
+                    $("<a>")
+                        .addClass("confirm-country")
+                        .text("Continuar")
+                );
 
-    $(".button-forum").replaceWith(newContent);
+            $(".button-forum").replaceWith(newContent);
 
-    scrollTo(".country-label");
-    $('div[class="level-register"]').listview('refresh');
-    } else {
-        mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo. Deben ser 9 dígitos");
+            $("#country").focus();
+
+            scrollTo(".country-label");
+            $('div[class="level-register"]').listview('refresh');
+        } else {
+            mostrarError("Número de teléfono no válido. Por favor, inténtelo de nuevo. Deben ser 9 dígitos");
+        }
+
+        // Detener la propagación del evento para evitar comportamientos predeterminados
+        event.preventDefault();
+        event.stopPropagation();
     }
-    });
+});
+
+$(".level-register").on("click"), ".phone-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+
+
+
 
     function validarTelefono() {
         var telefono = $("#phone").val();
@@ -195,14 +203,23 @@ try {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
     
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $country = $_POST["country"];
-    $city = $_POST["city"];
-    $postal_code = $_POST["postal_code"];
+    $username = $_COOKIE["username"];
+    $password = $_COOKIE["contra"];
+    $confirm_password = $_COOKIE["contra2"];
+    $email = $_COOKIE["email"];
+    $phone = $_COOKIE["phone"];
+    $country = $_COOKIE["pais"];
+    $city = $_COOKIE["ciudad"];
+    $postal_code = $_COOKIE["postal_cod"];
+
+    // $username = $_POST["username"];
+    // $password = $_POST["password"];
+    // $confirm_password = $_POST["confirm_password"];
+    // $email = $_POST["email"];
+    // $phone = $_POST["phone"];
+    // $country = $_POST["country"];
+    // $city = $_POST["city"];
+    // $postal_code = $_POST["postal_code"];
 
     //echo "<pre>".print_r($_POST,true)."</pre><br><br>";
 

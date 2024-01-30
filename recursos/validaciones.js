@@ -27,13 +27,19 @@ $(document).ready(function () {
     // Agregar label, input y botón al div con la clase "level-register"
     $(".level-register").append(userLabel, userInput);
 
-
     // Confirmar usuario
     $(".level-register").on("keydown", ".user-input", function (event) {
         // Verificar si la tecla presionada es Tab o Enter
         if (event.key === 'Tab' || event.key === 'Enter') {
             console.log("confirm-username");
             if (validarUsuario()) {
+
+                $(this).nextAll().remove();
+
+                localStorage.setItem('username', $(this).val());
+
+                document.cookie = "username="+ $(this).val();
+
                 var label = $("<label>")
                     .attr("for", "password")
                     .addClass("password-label")
@@ -52,16 +58,7 @@ $(document).ready(function () {
                 // Agregar label e input después del campo de usuario
                 $(this).after(label, input);
     
-                var phoneInputField = $("<input>")
-                    .attr({
-                        type: "text",
-                        id: "username",
-                        name: "username",
-                        value: $(this).val()
-                    })
-                    .hide();
-                $("form").append(phoneInputField);
-    
+
                 var newContent = $("<div>")
                     .addClass("button-forum")
                     .append(
@@ -69,7 +66,8 @@ $(document).ready(function () {
                             .addClass("confirm-password-button")
                             .text("Continuar")
                     );
-    
+                    
+                        
                 // Reemplazar el contenido del div con la clase "button-forum"
                 $(".button-forum").replaceWith(newContent);
     
@@ -94,6 +92,12 @@ $(document).ready(function () {
         if (event.key === 'Tab' || event.key === 'Enter') {
             console.log("contra")
             if (validarContraseña()) {
+
+                localStorage.setItem('contra', $(this).val());
+                document.cookie = "contra="+ $(this).val();
+
+                $(this).nextAll().remove();
+
                 var confirmLabel = $("<label>")
                     .attr("for", "confirm_password")
                     .addClass("confirm-password-label")
@@ -112,15 +116,6 @@ $(document).ready(function () {
                 // Agregar label e input después del campo de contraseña
                 $(".password-input").after(confirmLabel, confirmInput);
     
-                var phoneInputField = $("<input>")
-                    .attr({
-                        type: "password",
-                        id: "password",
-                        name: "password",
-                        value: $("#password").val()
-                    })
-                    .hide();
-                $("form").append(phoneInputField);
     
                 var newContent = $("<div>")
                     .addClass("button-forum")
@@ -178,6 +173,12 @@ $(document).ready(function () {
             event.preventDefault();  // Detener la propagación del evento para evitar comportamientos predeterminados
     
             if (validarConfirmacionContraseña()) {
+
+                localStorage.setItem('contra2', $(this).val());
+                document.cookie = "contra2="+ $(this).val();
+
+                $(this).nextAll().remove();
+
                 // Crear el label de correo electrónico
                 var emailLabel = $("<label>")
                     .attr("for", "email")
@@ -197,17 +198,6 @@ $(document).ready(function () {
                 // Agregar label e input al div con la clase "level-register"
                 $(".confirm-password-input").after(emailLabel, emailInput);
     
-                var phoneInputField = $("<input>")
-                    .attr({
-                        type: "password",
-                        id: "confirm_password",
-                        name: "confirm_password",
-                        value: $("#confirm_password").val()
-                    })
-                    .hide();
-    
-                $("form").append(phoneInputField);
-    
                 var newContent = $("<div>")
                     .addClass("button-forum")
                     .append(
@@ -215,11 +205,11 @@ $(document).ready(function () {
                             .addClass("confirm-email")
                             .text("Continuar")
                     );
-                $(".email-input").focus;
 
                 // Reemplazar el contenido del div con la clase "button-forum"
                 $(".button-forum").replaceWith(newContent);
                 
+                $("#email").focus();
 
                 $('div[class="level-register"]').listview('refresh');
             } else {
@@ -250,13 +240,19 @@ $(document).ready(function () {
 
     // });
 
-
+    // Confirmar email
     $(".level-register").on("keydown", ".email-input", function (event) {
         // Verificar si la tecla presionada es Tab o Enter
         if (event.key === 'Tab' || event.key === 'Enter') {
             event.preventDefault();  // Detener la propagación del evento para evitar comportamientos predeterminados
     
             if (validarCorreoElectronico()) {
+
+                localStorage.setItem('email', $(this).val());
+                document.cookie = "email="+ $(this).val();
+
+                $(this).nextAll().remove();
+
                 // Crear el label de teléfono
                 var phoneLabel = $("<label>")
                     .attr("for", "phone")
@@ -276,25 +272,17 @@ $(document).ready(function () {
                 // Agregar label e input al div con la clase "level-register"
                 $(".email-input").after(phoneLabel, phoneInput);
     
-                var phoneInputField = $("<input>")
-                    .attr({
-                        type: "text",
-                        id: "email",
-                        name: "email",
-                        value: $("#email").val()
-                    })
-                    .hide();
-    
-                $("form").append(phoneInputField);
-    
                 var newContent = $("<div>")
                     .addClass("button-forum")
                     .append(
                         $("<a>")
                             .addClass("confirm-phone")
                             .text("Continuar")
-                    );
-    
+                    ); 
+
+                
+                $('#phone').focus();
+                
                 // Reemplazar el contenido del div con la clase "button-forum"
                 $(".button-forum").replaceWith(newContent);
     
@@ -307,48 +295,49 @@ $(document).ready(function () {
     });
     
 
+    // $(".level-register").on("click", ".volver-confirm-phone", function () {
 
-
-    $(".level-register").on("click", ".volver-confirm-phone", function () {
-
-
-        $(".phone-label").remove();
-        $(".phone-input").remove();
+    //     $(".phone-label").remove();
+    //     $(".phone-input").remove();
         
-        var newContent = $("<div>")
-            .addClass("button-forum")
-            .append(
-                $("<a>")
-                    .addClass("confirm-email")
-                    .text("Continuar")
-            );
-            // Reemplazar el contenido del div con la clase "button-forum"
-            $(".button-forum").replaceWith(newContent);
+    //     var newContent = $("<div>")
+    //         .addClass("button-forum")
+    //         .append(
+    //             $("<a>")
+    //                 .addClass("confirm-email")
+    //                 .text("Continuar")
+    //         );
+    //         // Reemplazar el contenido del div con la clase "button-forum"
+    //         $(".button-forum").replaceWith(newContent);
+    // });
 
+    // $(".level-register").on("click", ".volver-confirm-country", function () {
 
-    });
+    //     $(".country-label").remove();
+    //     $(".country-input").remove();      
 
-    $(".level-register").on("click", ".volver-confirm-country", function () {
+    //     var newContent = $("<div>")
+    //     .addClass("button-forum")
+    //     .append(
+    //         $("<a>")
+    //             .addClass("confirm-phone")
+    //             .text("Continuar")
+    //     );
 
-        $(".country-label").remove();
-        $(".country-input").remove();      
+    //     // Reemplazar el contenido del div con la clase "button-forum"
+    //     $(".button-forum").replaceWith(newContent);
 
-        var newContent = $("<div>")
-        .addClass("button-forum")
-        .append(
-            $("<a>")
-                .addClass("confirm-phone")
-                .text("Continuar")
-        );
+    // });
 
-        // Reemplazar el contenido del div con la clase "button-forum"
-        $(".button-forum").replaceWith(newContent);
-
-    });
-
-    $(".level-register").on("click", ".confirm-country", function () {
+    $(".level-register").on("click", ".country-input", function () {
 
        if (validarPais()) {
+
+        localStorage.setItem('pais', $(this).val());
+        document.cookie = "pais="+ $(this).val();
+
+        $(this).nextAll().remove();
+
             // Crear el label de ciudad
             var cityLabel = $("<label>")
                 .attr("for", "city")
@@ -369,18 +358,6 @@ $(document).ready(function () {
             $(".country-input").after(cityLabel, cityInput);
 
 
-           var phoneInputField = $("<input>")
-           .attr({
-               type: "text",
-               id: "country",
-               name: "country",
-               value: $("#country").val()  
-           })
-           .hide(); 
-           $("form").append(phoneInputField);
-
-          
-
            var newContent = $("<div>")
             .addClass("button-forum")
             .append(
@@ -392,6 +369,7 @@ $(document).ready(function () {
             // Reemplazar el contenido del div con la clase "button-forum"
             $(".button-forum").replaceWith(newContent);
 
+            $("#city").focus();
            scrollTo(".city-label");
            $('div[class="level-register"]').listview('refresh');
 
@@ -400,161 +378,199 @@ $(document).ready(function () {
        }
     }); 
 
-    $(".level-register").on("click", ".volver-confirm-city", function () {
-        $(".country-input").prop("disabled", false);
+    // $(".level-register").on("click", ".volver-confirm-city", function () {
+    //     $(".country-input").prop("disabled", false);
 
-        $(".city-label").remove();
-        $(".city-input").remove();
+    //     $(".city-label").remove();
+    //     $(".city-input").remove();
 
-        var newContent = $("<div>")
-        .addClass("button-forum")
-        .append(
-            $("<a>")
-                .addClass("confirm-country")
-                .text("Continuar")
-        );
+    //     var newContent = $("<div>")
+    //     .addClass("button-forum")
+    //     .append(
+    //         $("<a>")
+    //             .addClass("confirm-country")
+    //             .text("Continuar")
+    //     );
 
-        // Reemplazar el contenido del div con la clase "button-forum"
-        $(".button-forum").replaceWith(newContent);
+    //     // Reemplazar el contenido del div con la clase "button-forum"
+    //     $(".button-forum").replaceWith(newContent);
+    //  }); 
 
+    $(".level-register").on("keydown", ".city-input", function (event) {
+        // Verificar si la tecla presionada es Tab o Enter
+        if (event.key === 'Tab' || event.key === 'Enter') {
+            console.log("city-input");
+            event.preventDefault();  // Detener la propagación del evento para evitar comportamientos predeterminados
+    
+            if (validarCiudad()) {
 
-     }); 
+                localStorage.setItem('ciudad', $(this).val());
+                document.cookie = "ciudad="+ $(this).val();
 
-    $(".level-register").on("click", ".confirm-city", function () {
-        if (validarCiudad()) {
+                $(this).nextAll().remove();
 
-            // Crear el label
-            var labelpostal = $("<label>")
-                .attr("for", "postal_code")
-                .addClass("postal-code-lebel")
-                .text("Código Postal:");
+                // Crear el label
+                var labelpostal = $("<label>")
+                    .attr("for", "postal_code")
+                    .addClass("postal-code-lebel")
+                    .text("Código Postal:");
+    
+                // Crear el input
+                var inputpostal = $("<input>")
+                    .attr({
+                        type: "text",
+                        id: "postal_code",
+                        name: "postal_code"
+                    })
+                    .addClass("postal-code-input")
+                    .prop("required", true);
+    
+                // Agregar label e input al body (o al contenedor que prefieras)
+                $(".city-input").after(labelpostal, inputpostal);
 
-            // Crear el input
-            var inputpostal = $("<input>")
-                .attr({
-                    type: "text",
-                    id: "postal_code",
-                    name: "postal_code"
-                })
-                .addClass("postal-code-input")
-                .prop("required", true);
-
-            // Agregar label e input al body (o al contenedor que prefieras)
-            $(".city-input").after(labelpostal, inputpostal);
-
-
-            var phoneInputField = $("<input>")
-            .attr({
-                type: "text",
-                id: "city",
-                name: "city",
-                value: $("#city").val()  
-            })
-            .hide(); 
-            $("form").append(phoneInputField);
-
-           
-            var newContent = $("<div>")
-            .addClass("button-forum")
-            .append(
-                $("<a>")
-                    .addClass("confirm-postal")
-                    .text("Continuar")
-            );
-
-            // Reemplazar el contenido del div con la clase "button-forum"
-            $(".button-forum").replaceWith(newContent);
-
-            scrollTo(".postal-code-lebel");
-            $('div[class="level-register"]').listview('refresh');
-
-        } else {
-            mostrarError("Ciudad no válida, no debe tener digitos. Por favor, inténtelo de nuevo.");
+    
+                var newContent = $("<div>")
+                    .addClass("button-forum")
+                    .append(
+                        $("<a>")
+                            .addClass("confirm-postal")
+                            .text("Continuar")
+                    );
+    
+                // Reemplazar el contenido del div con la clase "button-forum"
+                $(".button-forum").replaceWith(newContent);
+                    
+                $("#postal_code").focus();
+                scrollTo(".postal-code-lebel");
+                $('div[class="level-register"]').listview('refresh');
+            } else {
+                mostrarError("Ciudad no válida, no debe tener dígitos. Por favor, inténtelo de nuevo.");
+            }
         }
-    });
-
-    $(".level-register").on("click", ".volver-confirm-postal", function () {
-
-        $(".city-input").prop("disabled", false);
-
-        $(".postal-code-lebel").remove();
-        $(".postal-code-input").remove();
-
-        var newContent = $("<div>")
-            .addClass("button-forum")
-            .append(
-                $("<a>")
-                    .addClass("volver-confirm-city")
-                    .text("Volver"),
-                $("<a>")
-                    .addClass("confirm-city")
-                    .text("Continuar")
-            );
-
-            // Reemplazar el contenido del div con la clase "button-forum"
-            $(".button-forum").replaceWith(newContent);
-
-
-    });
-
-    $(".level-register").on("click", ".confirm-postal", function () {
-
-        if (validarPostal()) {
-
-            var newContent = $("<div>")
-                .addClass("button-forum")
-                .append(
-                    $("<button>")
-                        .attr("type", "submit")
-                        .addClass("form-button")
-                        .append(
-                            $("<i>")
-                                .addClass("fas fa-user-plus")
-                        )
-                        .append(" Registrar")
-                );
-
-            // Reemplazar el contenido del div con la clase "button-forum"
-            $(".button-forum").replaceWith(newContent);
-
-
-
-            var phoneInputField = $("<input>")
-            .attr({
-                type: "text",
-                id: "postal_code",
-                name: "postal_code",
-                value: $("#postal_code").val()  
-            })
-            .hide(); 
-            $("form").append(phoneInputField);
-
-
-            scrollTo(".postal-code-lebel");
-            $('div[class="level-register"]').listview('refresh');
-        } else {
-            mostrarError("Codigo postal invalido, son 5 digitos.");
-        }
-    });
-
-    $(".level-register").on("click", ".volver-confirm-postal-2", function () {
-
-        $(".postal-code-input").prop("disabled", false);
-
-        var newContent = $("<div>")
-        .addClass("button-forum")
-        .append(
-            $("<a>")
-                .addClass("confirm-postal")
-                .text("Continuar")
-        );
-
-        // Reemplazar el contenido del div con la clase "button-forum"
-        $(".button-forum").replaceWith(newContent);
-
-
     });
     
+
+    // $(".level-register").on("click", ".volver-confirm-postal", function () {
+
+    //     $(".city-input").prop("disabled", false);
+
+    //     $(".postal-code-lebel").remove();
+    //     $(".postal-code-input").remove();
+
+    //     var newContent = $("<div>")
+    //         .addClass("button-forum")
+    //         .append(
+    //             $("<a>")
+    //                 .addClass("volver-confirm-city")
+    //                 .text("Volver"),
+    //             $("<a>")
+    //                 .addClass("confirm-city")
+    //                 .text("Continuar")
+    //         );
+
+    //         // Reemplazar el contenido del div con la clase "button-forum"
+    //         $(".button-forum").replaceWith(newContent);
+    // });
+
+    $(".level-register").on("keydown", "#postal_code", function (event) {
+        // Verificar si la tecla presionada es Tab o Enter
+        if (event.key === 'Tab' || event.key === 'Enter') {
+            console.log("confirm-postal");
+            event.preventDefault();  // Detener la propagación del evento para evitar comportamientos predeterminados
+    
+            if (validarPostal()) {
+
+                localStorage.setItem('postal_cod', $(this).val());
+                document.cookie = "postal_cod="+ $(this).val();
+
+                $(this).nextAll().remove();
+
+                console.log("boton submit");
+            // Crear el botón de submit
+            var submitButton = $("<button>")
+                .attr("type", "submit")
+                .addClass("form-button")
+                .append(
+                    $("<i>")
+                        .addClass("fas fa-user-plus")
+                )
+                .append(" Registrar");
+
+            // Agregar el botón después del input de código postal
+            $(".level-register").append(submitButton);
+    
+                scrollTo(".postal-code-lebel");
+                $('div[class="level-register"]').listview('refresh');
+            } else {
+                mostrarError("Código postal inválido, deben ser 5 dígitos.");
+            }
+        }
+    });
+    
+
+    // $(".level-register").on("click", ".volver-confirm-postal-2", function () {
+
+    //     $(".postal-code-input").prop("disabled", false);
+
+    //     var newContent = $("<div>")
+    //     .addClass("button-forum")
+    //     .append(
+    //         $("<a>")
+    //             .addClass("confirm-postal")
+    //             .text("Continuar")
+    //     );
+
+    //     // Reemplazar el contenido del div con la clase "button-forum"
+    //     $(".button-forum").replaceWith(newContent);
+
+
+    // });
+    
+    // Al acceder a un <input> se eliminan los de debajo
+    $(".level-register").on("click"), ".user-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), ".password-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), ".confirm-password-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), ".email-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), ".country-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), ".city-input", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+    $(".level-register").on("click"), "#postal-code", function (event) {
+        if (!$(this).is(":last-child")) {
+            $(this).nextAll().remove();
+        }
+        event.stopPropagation();
+    }
+
+
 
     function scrollTo(element) {
         $('html, body').animate({
