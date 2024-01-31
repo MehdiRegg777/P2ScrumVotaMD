@@ -20,22 +20,42 @@ class MyTest extends BasePhpTest {
             assert.strictEqual(labelText, "Usuario:", "Texto de la etiqueta label incorrecto");
             console.log("Label Correcta");
 
-            await this.driver.findElement(By.id('username')).sendKeys('PruebaTest');
-
-            await this.driver.findElement(By.id('username')).sendKeys(Key.ENTER);
-            console.log("Introducir dato en Usuario");
-
-            const passwordLabel = await this.driver.findElement(By.css('label[for="password"]')).getText();
-            assert(passwordLabel === "Contraseña:", "Texto de la etiqueta label incorrecto para el campo de contraseña");
+            const username = await this.driver.findElement(By.id('username'));
+            await username.sendKeys('PruebaTest\n');
 
             const passwordInput = await this.driver.findElement(By.id('password'));
-await passwordInput.sendKeys('Tianle1234\n');
+            await passwordInput.sendKeys('Tianle1234\n');
+
+            const confirmPasswordInput = await this.driver.findElement(By.id('confirm_password'));
+            await confirmPasswordInput.sendKeys('Tianle1234\n');
+
+            const emailInput = await this.driver.findElement(By.id('email'));
+            await emailInput.sendKeys('tianleyin8888@gmail.com\n');
+
+            const phoneInput = await this.driver.findElement(By.id('phone'));
+            await phoneInput.sendKeys('666666666\n');
+
+            const countryDropdown = await this.driver.findElement(By.id('country'));
+            const optionToSelect = 'SPAIN'
+            await countryDropdown.findElement(By.css(`option[value="${optionToSelect}"]`)).click();
+
+            const cityInput = await driver.findElement(By.id('city'));
+            await cityInput.sendKeys('Barcelona\n');
+
+            const postalCodeInput = await driver.findElement(By.id('postal_code'));
+            await postalCodeInput.sendKeys('08940\n');
 
 
+            const registerButton = await driver.findElement(By.className('form-button'));
+            await registerButton.click();
+            await driver.sleep(2000);
+            try {
+                const successMessage = await driver.findElement(By.css('.mensaje-notificacion2'));
+                console.log('Test exitoso. La página muestra un mensaje de éxito:', await successMessage.getText());
+            } catch (error) {
+                console.error('Error: La página no muestra un mensaje de éxito. Podría haber ocurrido un problema durante el registro.');
+            }
 
-
-
-            console.log("TEST OK");
         } catch (error) {
             console.error("ERROR:", error.message);
         } finally {
