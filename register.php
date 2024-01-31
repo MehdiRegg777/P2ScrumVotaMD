@@ -1,3 +1,17 @@
+<?php
+include 'logger.php';
+
+try {
+    session_start();
+    if ($_SESSION['usuario']) {
+        header("Location: dashboard.php");
+    }
+} catch (Exception $e) {
+    logError($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
