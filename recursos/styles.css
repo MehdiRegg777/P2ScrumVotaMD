@@ -16,7 +16,7 @@ header {
 main {
 height: 100%;
 max-width: 800px;
-margin: 40px auto;
+margin: 30px auto;
 background-color: #fff;
 padding: 20px;
 border-radius: 10px;
@@ -154,6 +154,7 @@ form button.form-button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 25px;
 }
 
 .form-button {
@@ -174,6 +175,14 @@ form button.form-button:hover {
     border-radius: 8px;
     transition: background-color 0.3s ease;
     font-size: 15px;
+}
+
+#register_main {
+    margin-bottom: 5px;
+}
+
+#register_body {
+    min-height: 90vh;
 }
 
 /* login.php */
@@ -206,6 +215,16 @@ form button.form-button:hover {
     margin-top: 35px;
 }
 
+#login ul {
+    list-style: none;
+}
+
+#login ul li {
+    border: 3px red solid;
+    padding: 20px 25px;
+    border-radius: 10px;
+}
+
 /* dashboard.php */
 #dashboard_body {
         display: flex;
@@ -215,6 +234,7 @@ form button.form-button:hover {
 #dashboard {
     flex: 1;
     width: 100%;
+    margin-bottom: 80px;
 }    
 
 #dashboard ul {
@@ -290,6 +310,12 @@ form button.form-button:hover {
 .navbar ul li a {
     text-decoration: none;
     color: #fff;
+    transition: color .4s ease, text-decoration .4s ease;
+}
+
+.navbar ul li a:hover {
+    color: #6D7993;
+    text-decoration: underline;
 }
 
 /* footer.php */
@@ -299,12 +325,15 @@ form button.form-button:hover {
 }
 
 #index main {
+    margin-bottom: 90px ;
     flex: 1;
 }
 
 footer {
     text-align: center;
     padding: 5px 0;
+    position: fixed;
+    bottom: 0;
     background-color: #635a5f;
     color: #fff;
     width: 100%;

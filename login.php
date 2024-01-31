@@ -37,15 +37,25 @@ try {
             <br>
             <button type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar sesión</button>
             <br>
+            <ul id="notis_login"></ul>
             <div class="button-inicio">
                 <a href="index.php"><i class="fas fa-home"></i> Volver Inicio</a>
             </div>
         </form>
     </main>
+
     <?php
-    include_once("common/footer.php")
+    include_once("recursos/footer.php")
     ?>
 
+<script>
+    function eliminarNotificacion(idNotificacion) {
+        var elemento = document.getElementById(idNotificacion);
+        if (elemento) {
+            elemento.remove();
+        }
+    }
+</script>
 
 </body>
 
@@ -82,8 +92,19 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             exit();
         } else {
             // Añadir las notificaciones
-            echo "<script> errorNotification('Los datos no coinciden en nuestra base de datos o no existen.'); </script>";
-        }
+            $mensajeError = "Usuario o contraseña incorrectos";
+
+            // Generar un identificador único para la notificación (puedes usar una función hash, por ejemplo)
+            $idNotificacion = md5(uniqid());
+        
+            // Imprimir el mensaje de error y la cruz para eliminar la notificación
+            echo '<script>
+                var ul = document.getElementById("notis_login");
+                var li = document.createElement("li");
+                li.id = "' . $idNotificacion . '";
+                li.innerHTML = "' . $mensajeError . ' <span class=\"cerrar-notificacion\" onclick=\"eliminarNotificacion(\'' . $idNotificacion . '\')\">&times;</span>";
+                ul.appendChild(li);
+            </script>';        }
     } catch (Exception $e) {
         logError($e->getMessage() ,$_SERVER['PHP_SELF'],"CONSULTA SQL",);
     }

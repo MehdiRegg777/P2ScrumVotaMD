@@ -4,7 +4,13 @@
         <?php
         session_start();
         if (isset($_SESSION['usuario'])) {
-            echo "<li><a href='dashboard.php'>DashBoard</a></li>";
+            echo '<li>';
+            if (basename($_SERVER['PHP_SELF']) !== 'dashboard.php') {
+                echo '<a href="dashboard.php">DashBoard</a>';
+            } else {    
+                echo 'DashBoard';
+            }
+            echo '</li>';
             echo '<li><a href="create_poll.php">Crear Encuesta</a></li>';
             echo "<h3>Bienvenido, ".$_SESSION['nombre']." </h3>";
         }
@@ -15,7 +21,11 @@
         if (isset($_SESSION['usuario'])) {
             echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
         } else {
-            echo '<li><a href="login.php">Iniciar Sesión</a></li>';
+            // Comprobar si el usuario está en la página login.php
+            $currentPage = basename($_SERVER['PHP_SELF']);
+            if ($currentPage !== 'login.php') {
+                echo '<li><a href="login.php">Iniciar Sesión</a></li>';
+            }
             echo '<li><a href="register.php">Registrarse</a></li>';
         }
         ?>

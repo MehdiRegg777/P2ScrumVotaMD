@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="recursos/logo.png" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-<body>
+<body id="register_body">
 <?php
     
     try {
@@ -35,12 +35,13 @@
         unset($querystr);
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
+        logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
         exit;
     }
 
 ?>
         
-<main>
+<main id="register_main">
     <section>
         <h1>Registrar Usuario</h1>
         <form method="post" id="registration-form">
@@ -71,7 +72,9 @@
         <div id="notification-registrado"></div>
     </section>
 </main>
-
+<?php
+    include_once("recursos/footer.php");
+?>
 
 <script src='recursos/validaciones.js'></script>
 <script>            
@@ -198,6 +201,7 @@ try {
             echo "<script>
             document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
         </script>";
+        logError($e ->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
     exit;
 }
 
