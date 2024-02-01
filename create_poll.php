@@ -46,6 +46,9 @@ include_once("recursos/header.php");
             </div> 
         </fieldset>
         <?php
+
+include 'logger.php';
+
         try {
             $hostname = "localhost";
             $dbname = "vota_DDBB";
@@ -86,6 +89,7 @@ include_once("recursos/header.php");
             unset($querystr);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
             exit;
         }
 
