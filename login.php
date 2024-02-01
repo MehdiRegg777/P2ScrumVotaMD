@@ -3,7 +3,7 @@ include 'logger.php';
 
 try {
     session_start();
-    if ($_SESSION['usuario']) {
+    if (isset($_SESSION['usuario'])) {
         header("Location: dashboard.php");
     }
 } catch (Exception $e) {
@@ -71,7 +71,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     try {
         // Cambiar parámetros, conexión a BD
         $dsn = "mysql:host=localhost;dbname=vota_DDBB";
-        $pdo = new PDO($dsn, 'tianleyin', 'Sinlove2004_');
+        $hostname = "localhost";
+        $dbname = "vota_DDBB";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+        $pdo = new PDO($dsn, $username, $pw);
 
         // Cambiar query
         $query = $pdo->prepare("SELECT * FROM user WHERE password = SHA2(:pwd, 512) AND email = :email");
