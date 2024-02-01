@@ -130,7 +130,7 @@ $(document).ready(function () {
 
                 $(".confirm-password-input").focus();
     
-                $('div[class="level-register"]').listview('refresh');
+                
     
                 // Colocar el foco en el nuevo campo de confirmar contraseña
     
@@ -211,7 +211,7 @@ $(document).ready(function () {
                 
                 $("#email").focus();
 
-                $('div[class="level-register"]').listview('refresh');
+                
             } else {
                 mostrarError("La Contraseña no coincide. Por favor, inténtelo de nuevo.");
             }
@@ -287,7 +287,7 @@ $(document).ready(function () {
                 $(".button-forum").replaceWith(newContent);
     
                 scrollTo(".phone-label");
-                $('div[class="level-register"]').listview('refresh');
+                
             } else {
                 mostrarError("Correo electrónico no válido. Por favor, inténtelo de nuevo.");
             }
@@ -329,7 +329,7 @@ $(document).ready(function () {
 
     // });
 
-    $(".level-register").on("click", ".country-input", function () {
+    $(".level-register").on("keydown", ".country-input", function () {
 
        if (validarPais()) {
 
@@ -371,7 +371,7 @@ $(document).ready(function () {
 
             $("#city").focus();
            scrollTo(".city-label");
-           $('div[class="level-register"]').listview('refresh');
+           
 
        } else {
            mostrarError("País no válido. Por favor, inténtelo de nuevo.");
@@ -442,7 +442,7 @@ $(document).ready(function () {
                     
                 $("#postal_code").focus();
                 scrollTo(".postal-code-lebel");
-                $('div[class="level-register"]').listview('refresh');
+                
             } else {
                 mostrarError("Ciudad no válida, no debe tener dígitos. Por favor, inténtelo de nuevo.");
             }
@@ -500,7 +500,7 @@ $(document).ready(function () {
             $(".level-register").append(submitButton);
     
                 scrollTo(".postal-code-lebel");
-                $('div[class="level-register"]').listview('refresh');
+                
             } else {
                 mostrarError("Código postal inválido, deben ser 5 dígitos.");
             }
