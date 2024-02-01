@@ -329,7 +329,7 @@ $(document).ready(function () {
 
     // });
 
-    $(".level-register").on("click", ".country-input", function () {
+    $(".level-register").on("keydown", ".country-input", function () {
 
        if (validarPais()) {
 
