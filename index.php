@@ -8,26 +8,27 @@
     <link href="recursos/styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="recursos/logo.png" />
 </head>
-<body>
-
-
-
+<body id="index">
+<?php
+include_once("recursos/header.php");
+?>
 <main>
     <section>
         <h1>Bienvenido Al Portal VotaYa</h1>
-        <p>VotaYa es tu destino en línea para participar en procesos democráticos de manera conveniente y segura. Nos enorgullece ofrecer a los ciudadanos una plataforma intuitiva y accesible que facilita el ejercicio de su derecho al voto y contribuye a fortalecer unos votos mas seguros</p>
+        <p>VotaYa es tu destino en línea para participar en procesos democráticos de manera conveniente y segura. Nos enorgullece ofrecer a los ciudadanos una plataforma intuitiva y accesible que facilita el ejercicio de su derecho al voto y contribuye a fortalecer unos votos más seguros.</p>
         <img src="recursos/logo.png" alt="Imagen Representativa">
     </section>
 
     <section>
-        <h2>Acciones</h2>
+        <h2>Acciones:</h2>
         <div class="button-container">
-            <a ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+            <a href="login.php"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             <a href="register.php"><i class="fas fa-user-plus"></i> Registrarse</a>
         </div>
     </section>
 </main>
-
-
+<?php
+include_once("recursos/footer.php");
+?>
 </body>
 </html>
