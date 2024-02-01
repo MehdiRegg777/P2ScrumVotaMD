@@ -273,6 +273,16 @@ form button.form-button:hover {
     background-color: #9099A2;
 }
 
+/* list_polls.php (Falta Comprovacion)*/
+.grid-polls ul {
+    list-style: none;
+    border: 2px solid #6D7993;
+}
+
+.grid-polls ul li {
+    padding: 30px 40px;
+}
+
 /* header.php */
 .navbar {
     text-align: center;
