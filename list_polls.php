@@ -16,7 +16,7 @@
             <?php
             include 'logger.php';
             session_start();
-            if (!isset($_SESSION["usuario"])) {
+            if (isset($_SESSION["usuario"])) {
                 $dbname = "vota_DDBB";
                 $user = "aws27";
                 $password = "aws27mehdidiego";
