@@ -75,13 +75,13 @@ include 'logger.php';
                         $querySelectOptionId->execute([$optionValue]);
                         $row = $querySelectOptionId->fetch(PDO::FETCH_ASSOC);
                         $answerId = $row['answer_id'];
-
-                       
-                        $querystr = $pdo->prepare("INSERT INTO poll (title_name, creation_date, update_date, start_date, end_date, question, votes) VALUES (?, NOW(), NOW(), ?, ?, ?, 0)");
-                        $querystr->execute([$title, $startDate, $endDate, $optionValue]);
+                    
+                        
                     }
                 }
-                header("Location: dashboard.php");
+                $querystr = $pdo->prepare("INSERT INTO poll (title_name, start_date, end_date) VALUES (?, ?, ?)");
+                $querystr->execute([$title, $startDate, $endDate]);
+
                 header("Location: dashboard.php?from=create");
             }
 
