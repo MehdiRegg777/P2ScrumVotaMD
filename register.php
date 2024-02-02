@@ -10,6 +10,58 @@ try {
     logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
 }
 
+if (isset($_GET['token'])) {
+            // Proxmox
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "aws27";
+        // $pw = "aws27mehdidiego";
+
+                // Local
+                $hostname = "localhost";
+                $dbname = "vota_DDBB";
+                $username = "tianleyin";
+                $password = "Sinlove2004_";
+    try {
+        // Conexión a la base de datos
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $stmt = $pdo->prepare("SELECT token_verified, user_id FROM user WHERE token = ?");
+        $stmt->execute([$_GET['token']]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $token_verified = $result['token_verified'];
+        $user_id = $result['user_id'];
+    
+        if ($token_verified == 0) {
+                                
+                $updateStmt = $pdo->prepare("UPDATE user SET token_verified = 1 WHERE user_id = ?");
+                $updateStmt->execute([$user_id]);
+    
+                echo "Tu correo electrónico ha sido validado correctamente.";
+                logInfo("Token verificado correctamente", $_SERVER['PHP_SELF'], "TOKEN VERIFICADO");
+    
+        } else {
+                echo "Token no válido.";
+                logInfo("Token ya validado", $_SERVER['PHP_SELF'], "TOKEN USADO");
+            }
+
+    
+        // Cerrar la conexión a la base de datos
+        unset($pdo);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        // Manejar el error según tus necesidades
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL");
+    }
+} else {
+    logInfo("Token no proporcionado en la URL", $_SERVER['PHP_SELF'], "TOKEN NO ENCONTRADO");
+    http_response_code(404);
+    include('errors/errores404.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -299,6 +351,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
                 $error_info = $insert_user_stmt->errorInfo();
                 $notification_message = "Error al registrar el usuario: " . $error_info[2];
                 //echo "Error al registrar el usuario: " . $error_info[2]; 
+                logInfo($error_info, $_SERVER['PHP_SELF'], "Fallo Registro Usuario");
             } else {
                 $notification_message = "Usuario registrado con éxito.";
                 //echo "Usuario registrado con éxito.";
@@ -320,9 +373,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
                 $insert_user_token_stmt->execute();
 
                 if ($insert_user_token_stmt->errorCode() != 0) {
-                    $error_info = $insert_user_stmt->errorInfo();
-                    $notification_message = "Error al registrar el usuario: " . $error_info[2];
-                    //echo "Error al registrar el usuario: " . $error_info[2]; 
+                    logInfo($error_info, $_SERVER['PHP_SELF'], "Fallo INSERT TOKEN");
+                } else {
+
+                    $asunto = "Validación de Correo Electrónico";
+                    $mensaje = "¡Gracias por registrarte! Para validar tu dirección de correo electrónico, haz clic en el siguiente enlace:\n";
+                    $mensaje .= "https://aws27.ieti.site/register.php?token=$token_email";
+
+                    $cabeceras = "From: aws27.ieti.site" . "\r\n" .
+                                "Reply-To: aws27.ieti.site" . "\r\n" .
+                                "X-Mailer: PHP/" . phpversion();
+
+                    // Enviar el correo electrónico
+                    mail($correoElectronico, $asunto, $mensaje, $cabeceras);
+
+                    logInfo("Mail para verificar el registro enviado correctamente", $_SERVER['PHP_SELF'],"Mail Registro");
                 }
 
             }
