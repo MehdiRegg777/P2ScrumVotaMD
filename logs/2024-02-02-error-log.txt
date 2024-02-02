@@ -1,0 +1,7 @@
+[2024-02-02 16:06:05] - 127.0.0.1 - Page: /register.php - Issue: [Conexión BD] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-02 16:06:29] - 127.0.0.1 - Page: /register.php - Issue: [Conexión BD] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-02 16:08:01] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-02 16:08:35] - 127.0.0.1 - Page: /login.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-02 16:09:21] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correctotianleyin8888@gmail.com
+[2024-02-02 16:13:17] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-02 16:13:19] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: tianleyin

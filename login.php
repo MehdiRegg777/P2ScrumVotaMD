@@ -7,7 +7,7 @@ try {
         header("Location: dashboard.php");
     }
 } catch (Exception $e) {
-    logError($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
+    logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
 }
 
 ?>
@@ -71,10 +71,18 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     try {
         // Cambiar parámetros, conexión a BD
         $dsn = "mysql:host=localhost;dbname=vota_DDBB";
-        $hostname = "localhost";
-        $dbname = "vota_DDBB";
-        $username = "aws27";
-        $pw = "aws27mehdidiego";
+
+        // Proxmox
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "aws27";
+        // $pw = "aws27mehdidiego";
+
+                // Local
+                $hostname = "localhost";
+                $dbname = "vota_DDBB";
+                $username = "tianleyin";
+                $pw = "Sinlove2004_";
         $pdo = new PDO($dsn, $username, $pw);
 
         // Cambiar query
@@ -92,6 +100,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             session_start();
             $_SESSION["usuario"] = $row['user_id'];
             $_SESSION['nombre'] = $row['user_name'];
+            logInfo("Login correcto: ".$email, $_SERVER['PHP_SELF'], "Inicio sesión correcto");
             header("Location: dashboard.php");
             exit();
         } else {
@@ -110,7 +119,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 ul.appendChild(li);
             </script>';        }
     } catch (Exception $e) {
-        logError($e->getMessage() ,$_SERVER['PHP_SELF'],"CONSULTA SQL",);
+        logInfo($e->getMessage() ,$_SERVER['PHP_SELF'],"CONSULTA SQL",);
     }
 }
 ?>

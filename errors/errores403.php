@@ -13,8 +13,6 @@ header('HTTP/1.0 403 Forbidden');
 
 <body>
 
-
-
     <main>
         <section>
             <h2>Acceso prohibido</h2>

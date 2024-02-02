@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    header("HTTP/1.1 403 Forbidden");
+    // include('/home/tianleyin/P2ScrumVotaMD/errors/errores403.php');
+    
+    // Para el proxmox:
+    include('/var/www/html/P2ScrumVotaMD/errors/errores403.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -89,7 +103,7 @@ include 'logger.php';
             unset($querystr);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-            logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
+            logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
             exit;
         }
 

@@ -7,7 +7,7 @@ try {
         header("Location: dashboard.php");
     }
 } catch (Exception $e) {
-    logError($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
+    logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
 }
 
 ?>
@@ -27,12 +27,18 @@ try {
 <?php
     
     try {
+        // Proxmox
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "aws27";
+        // $pw = "aws27mehdidiego";
+
+        // Local
         $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "aws27";
-        $pw = "aws27mehdidiego";
+        $username = "tianleyin";
+        $pw = "Sinlove2004_";
 
-        
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -46,7 +52,7 @@ try {
         unset($querystr);
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
-        logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
         exit;
     }
 
@@ -195,15 +201,18 @@ function cerrarNotificacion() {
 error_reporting(0);
 
 try {
-    $hostname = "localhost";
-    $dbname = "vota_DDBB";
-    $username = "aws27";
-    $pw = "aws27mehdidiego";
+    // Proxmox
+    // $hostname = "localhost";
+    // $dbname = "vota_DDBB";
+    // $username = "aws27";
+    // $pw = "aws27mehdidiego";
     
+            // Local
+            $hostname = "localhost";
+            $dbname = "vota_DDBB";
+            $username = "tianleyin";
+            $pw = "Sinlove2004_";
     
-    
-    
-
     $pdo = new PDO ("mysql:host=$hostname;dbname=$dbname","$username","$pw");
 } catch (PDOException $e) {
     $notification_message = "Failed to get DB handle: " . $e->getMessage() . "\n";
@@ -211,7 +220,7 @@ try {
             echo "<script>
             document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
         </script>";
-        logError($e ->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
+        logInfo($e ->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
     exit;
 }
 
@@ -293,9 +302,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
             } else {
                 $notification_message = "Usuario registrado con éxito.";
                 //echo "Usuario registrado con éxito.";
+                logInfo($notification_message.": ".$_COOKIE['email'], $_SERVER['PHP_SELF'], "Registro Usuario");
                 echo "<script>
                 document.getElementById('notification-registrado').innerHTML = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">$notification_message</p></div>';
             </script>";
+
+                // Enviar email de verificación
+                $tiempo = time();
+                $palabraSecreta = "aws27";
+                $cadenaToken = $email.$time.$palabraSecreta;
+
+                $token_email = md5($cadenaToken);
+
+                $insert_user_token = "INSERT INTO user (token) VALUES (:token)";
+                $insert_user_token_stmt = $pdo->prepare($insert_user_token);
+                $insert_user_token_stmt->bindParam(':token', $token_email, PDO::PARAM_STR);
+                $insert_user_token_stmt->execute();
+
+                if ($insert_user_token_stmt->errorCode() != 0) {
+                    $error_info = $insert_user_stmt->errorInfo();
+                    $notification_message = "Error al registrar el usuario: " . $error_info[2];
+                    //echo "Error al registrar el usuario: " . $error_info[2]; 
+                }
+
             }
 
         } else {
@@ -308,7 +337,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || !empty($_POST)) {
         }
     }catch(PDOException $e){
         echo "Error: " . $e->getMessage();
-        logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
         exit;
     }
     unset($pdo);
