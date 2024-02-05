@@ -9,67 +9,6 @@ try {
 } catch (Exception $e) {
     logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
 }
-
-if (isset($_GET['token'])) {
-    // Proxmox
-    // $hostname = "localhost";
-    // $dbname = "vota_DDBB";
-    // $username = "aws27";
-    // $pw = "aws27mehdidiego";
-
-    // Local
-    $hostname = "localhost";
-    $dbname = "vota_DDBB";
-    $username = "tianleyin";
-    $password = "Sinlove2004_";
-    try {
-        // Conexión a la base de datos
-        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $stmt = $pdo->prepare("SELECT token_verified, user_id FROM user WHERE token = ?");
-        $stmt->execute([$_GET['token']]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $token_verified = $result['token_verified'];
-        $user_id = $result['user_id'];
-
-        if ($token_verified == 0) {
-
-            $updateStmt = $pdo->prepare("UPDATE user SET token_verified = 1 WHERE user_id = ?");
-            $updateStmt->execute([$user_id]);
-            echo "<script>
-            var notificationRegistrado = document.getElementById('notification-registrado');
-            if (notificationRegistrado) {
-                var successMessage = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">Email verificado correctamente</p></div>';
-                notificationRegistrado.innerHTML = successMessage;
-            }
-          </script>";
-
-            logInfo("Token verificado correctamente", $_SERVER['PHP_SELF'], "TOKEN VERIFICADO");
-        } else {
-
-
-            echo "<script>
-            var notificationRegistrado = document.getElementById('notification-registrado');
-            if (notificationRegistrado) {
-                var errorMessage = '<div class=\"notificacion-error2\"><span class=\"cerrar-notificacion2\" onclick=\"cerrarNotificacion()\">&times;</span><p class=\"mensaje-notificacion2\">Email verificado anteriormente</p></div>';
-                notificationRegistrado.innerHTML = errorMessage;
-            }
-          </script>";
-            logInfo("Token ya validado", $_SERVER['PHP_SELF'], "TOKEN USADO");
-        }
-
-
-        // Cerrar la conexión a la base de datos
-        unset($pdo);
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        // Manejar el error según tus necesidades
-        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL");
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -116,6 +55,56 @@ if (isset($_GET['token'])) {
         echo "Error: " . $e->getMessage();
         logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD");
         exit;
+    }
+
+    if (isset($_GET['token'])) {
+        // Proxmox
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "aws27";
+        // $pw = "aws27mehdidiego";
+
+        // Local
+        $hostname = "localhost";
+        $dbname = "vota_DDBB";
+        $username = "tianleyin";
+        $password = "Sinlove2004_";
+        try {
+            // Conexión a la base de datos
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $pdo->prepare("SELECT token_verified, user_id FROM user WHERE token = ?");
+            $stmt->execute([$_GET['token']]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $token_verified = $result['token_verified'];
+            $user_id = $result['user_id'];
+
+            if ($token_verified == 0) {
+
+                $_SESSION['mensaje'] = "¡Email verificado correctamente! Ahora puedes iniciar sesión.";
+
+                logInfo("Token verificado correctamente", $_SERVER['PHP_SELF'], "TOKEN VERIFICADO");
+
+                header("Location: login.php");
+            } else {
+
+                $_SESSION['mensaje'] = "¡Email ya verificado anteriormente!";
+
+                logInfo("Token ya validado", $_SERVER['PHP_SELF'], "TOKEN USADO");
+
+                header("Location: login.php");
+            }
+
+
+            // Cerrar la conexión a la base de datos
+            unset($pdo);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            // Manejar el error según tus necesidades
+            logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL");
+        }
     }
 
     ?>
@@ -395,32 +384,40 @@ if (isset($_GET['token'])) {
                         logInfo($error_info, $_SERVER['PHP_SELF'], "Fallo INSERT TOKEN");
                     } else {
 
-                        $mail = new PHPMailer();
-                        $mail->IsSMTP();
-                        $mail->Mailer = "smtp";
+                        // $mail = new PHPMailer();
+                        // $mail->IsSMTP();
+                        // $mail->Mailer = "smtp";
+                        // $mail->SMTPDebug  = 0;
+                        // $mail->SMTPAuth   = TRUE;
+                        // $mail->CharSet = 'UTF-8';
+                        // $mail->SMTPSecure = "tls";
+                        // $mail->Port       = 587;
+                        // $mail->Host       = "smtp.gmail.com";
+                        // $mail->IsHTML(true);
+                        // $mail->AddAddress($email);
+                        // $mail->Subject = "Validación de Correo Electrónico";
+                        // $mensaje = "¡Gracias por registrarte! Para validar tu dirección de correo electrónico, haz clic en el siguiente enlace:\n";
+                        // // $mensaje .= "https://aws27.ieti.site/register.php?token=$token_email";
+                        // $mail->MsgHTML($mensaje);
+                        // if (!$mail->Send()) {
+                        //     logInfo("Mail para verificar el registro fallido", $_SERVER['PHP_SELF'], "Mail Registro Fallido");
+                        // } else {
+                        //     logInfo("Mail para verificar el registro enviado correctamente", $_SERVER['PHP_SELF'], "Mail Registro Correcto");
+                        // }
 
-                        $mail->SMTPDebug  = 0;
-                        $mail->SMTPAuth   = TRUE;
-                        $mail->CharSet = 'UTF-8';
-                        $mail->SMTPSecure = "tls";
-                        $mail->Port       = 587;
-                        $mail->Host       = "smtp.gmail.com";
-                        $mail->Username   = "tyin.cf@iesesteveterradas.cat";
-                        $mail->Password   = "Sinlove2004";
-
-                        $mail->IsHTML(true);
-                        $mail->AddAddress($email);
-                        $mail->Subject = "Validación de Correo Electrónico";
+                        $asunto = "Validación de Correo Electrónico";
                         $mensaje = "¡Gracias por registrarte! Para validar tu dirección de correo electrónico, haz clic en el siguiente enlace:\n";
                         // $mensaje .= "https://aws27.ieti.site/register.php?token=$token_email";
                         $mensaje .= "http://0.0.0.0:8080/register.php?token=$token_email";
 
-                        $mail->MsgHTML($mensaje);
-                        if (!$mail->Send()) {
-                            logInfo("Mail para verificar el registro fallido", $_SERVER['PHP_SELF'], "Mail Registro Fallido");
-                        } else {
-                            logInfo("Mail para verificar el registro enviado correctamente", $_SERVER['PHP_SELF'], "Mail Registro Correcto");
-                        }
+                        $cabeceras = "From: aws27.ieti.site" . "\r\n" .
+                            "Reply-To: aws27.ieti.site" . "\r\n" .
+                            "X-Mailer: PHP/" . phpversion();
+
+                        // Enviar el correo electrónico
+                        mail($correoElectronico, $asunto, $mensaje, $cabeceras);
+
+                        logInfo("Mail para verificar el registro enviado correctamente", $_SERVER['PHP_SELF'], "Mail Registro");
                     }
                 }
             } else {

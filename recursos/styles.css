@@ -225,10 +225,18 @@ form button.form-button:hover {
     border-radius: 10px;
 }
 
+#login #verification_message {
+    border: 3px solid #6D7993;
+}
+
 /* dashboard.php */
 #dashboard_body {
         display: flex;
         flex-direction: column;
+}
+
+#dashboard_body .navbar {
+    height: auto;
 }
 
 #dashboard {

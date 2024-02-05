@@ -42,3 +42,12 @@
 [2024-02-05 17:01:12] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
 [2024-02-05 17:03:08] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
 [2024-02-05 17:04:38] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-05 17:49:56] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:58:30] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:59:20] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 18:00:03] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 18:04:37] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 18:05:17] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 18:05:38] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 18:05:57] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-05 18:09:27] - 127.0.0.1 - Page: /create_poll.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)

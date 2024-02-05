@@ -37,25 +37,33 @@ try {
             <br>
             <button type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar sesión</button>
             <br>
-            <ul id="notis_login"></ul>
+            <ul id="notis_login">
+                <?php
+                // Verificar si existe la variable de sesión y mostrar el mensaje
+                if (isset($_SESSION['mensaje'])) {
+                    echo '<li id="verification_message">' . $_SESSION['mensaje'] . '</li>';
+                    // Limpiar la variable de sesión después de mostrar el mensaje
+                    unset($_SESSION['mensaje']);
+                }
+                ?>
+            </ul>
             <div class="button-inicio">
                 <a href="index.php"><i class="fas fa-home"></i> Volver Inicio</a>
             </div>
         </form>
     </main>
-
     <?php
     include_once("recursos/footer.php")
     ?>
 
-<script>
-    function eliminarNotificacion(idNotificacion) {
-        var elemento = document.getElementById(idNotificacion);
-        if (elemento) {
-            elemento.remove();
+    <script>
+        function eliminarNotificacion(idNotificacion) {
+            var elemento = document.getElementById(idNotificacion);
+            if (elemento) {
+                elemento.remove();
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 
@@ -78,11 +86,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // $username = "aws27";
         // $pw = "aws27mehdidiego";
 
-                // Local
-                $hostname = "localhost";
-                $dbname = "vota_DDBB";
-                $username = "tianleyin";
-                $pw = "Sinlove2004_";
+        // Local
+        $hostname = "localhost";
+        $dbname = "vota_DDBB";
+        $username = "tianleyin";
+        $pw = "Sinlove2004_";
         $pdo = new PDO($dsn, $username, $pw);
 
         // Cambiar query
@@ -100,7 +108,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             session_start();
             $_SESSION["usuario"] = $row['user_id'];
             $_SESSION['nombre'] = $row['user_name'];
-            logInfo("Login correcto: ".$email, $_SERVER['PHP_SELF'], "Inicio sesión correcto");
+            logInfo("Login correcto: " . $email, $_SERVER['PHP_SELF'], "Inicio sesión correcto");
             header("Location: dashboard.php");
             exit();
         } else {
@@ -109,7 +117,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
             // Generar un identificador único para la notificación (puedes usar una función hash, por ejemplo)
             $idNotificacion = md5(uniqid());
-        
+
             // Imprimir el mensaje de error y la cruz para eliminar la notificación
             echo '<script>
                 var ul = document.getElementById("notis_login");
@@ -117,9 +125,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 li.id = "' . $idNotificacion . '";
                 li.innerHTML = "' . $mensajeError . ' <span class=\"cerrar-notificacion\" onclick=\"eliminarNotificacion(\'' . $idNotificacion . '\')\">&times;</span>";
                 ul.appendChild(li);
-            </script>';        }
+            </script>';
+        }
     } catch (Exception $e) {
-        logInfo($e->getMessage() ,$_SERVER['PHP_SELF'],"CONSULTA SQL",);
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL",);
     }
 }
 ?>
