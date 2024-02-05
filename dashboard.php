@@ -1,4 +1,5 @@
 <?php
+include 'logger.php';
 session_start();
 
 // Verifica si el usuario ha iniciado sesión
@@ -31,11 +32,6 @@ if (!isset($_SESSION["usuario"])) {
 <body id="dashboard_body">
 <?php
 include_once("recursos/header.php");
-
-if (isset($_GET['from']) && $_GET['from'] === 'create') {
-    // mostrar alerta de javascript
-    echo '<script>alert("Has anyadido correctamente la encuesta!");</script>';
-}
 ?>
     <main id="dashboard">        
         <ul>

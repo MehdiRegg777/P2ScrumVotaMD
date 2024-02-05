@@ -51,3 +51,15 @@
 [2024-02-05 18:05:38] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
 [2024-02-05 18:05:57] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
 [2024-02-05 18:09:27] - 127.0.0.1 - Page: /create_poll.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-05 19:21:18] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'tianleyin'@'localhost' (using password: NO)
+[2024-02-05 19:21:18] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'tianleyin'@'localhost' (using password: NO)
+[2024-02-05 19:21:28] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-05 19:21:33] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'tianleyin'@'localhost' (using password: NO)
+[2024-02-05 19:21:33] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'tianleyin'@'localhost' (using password: NO)
+[2024-02-05 19:22:04] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:23:51] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:23:53] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:23:59] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:24:44] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:25:12] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
+[2024-02-05 19:25:14] - 127.0.0.1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - USER_ID no encontrado
