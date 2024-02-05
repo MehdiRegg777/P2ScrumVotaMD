@@ -1,0 +1,44 @@
+[2024-02-05 15:29:34] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN NO ENCONTRADO] - Token no proporcionado en la URL
+[2024-02-05 15:29:36] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN NO ENCONTRADO] - Token no proporcionado en la URL
+[2024-02-05 15:30:07] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN NO ENCONTRADO] - Token no proporcionado en la URL
+[2024-02-05 15:31:13] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 15:31:13] - 127.0.0.1 - Page: /register.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000]: General error: 1364 Field 'user_name' doesn't have a default value
+[2024-02-05 15:38:18] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-05 15:40:36] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-05 15:41:37] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 15:41:37] - 127.0.0.1 - Page: /register.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000]: General error: 1364 Field 'user_name' doesn't have a default value
+[2024-02-05 15:44:07] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 15:44:07] - 127.0.0.1 - Page: /register.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000]: General error: 1364 Field 'user_name' doesn't have a default value
+[2024-02-05 15:50:25] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 15:50:25] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro] - Mail para verificar el registro enviado correctamente
+[2024-02-05 15:56:24] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 15:56:24] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:00:23] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:00:23] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:20:16] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:20:16] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:28:43] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:28:47] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro Correcto] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:30:48] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:30:52] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro Correcto] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:33:18] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:33:23] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro Correcto] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:35:40] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:35:43] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro Correcto] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:35:54] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN VERIFICADO] - Token verificado correctamente
+[2024-02-05 16:38:54] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 16:38:55] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 16:38:57] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 16:40:48] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-05 16:40:52] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro Correcto] - Mail para verificar el registro enviado correctamente
+[2024-02-05 16:41:03] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN VERIFICADO] - Token verificado correctamente
+[2024-02-05 16:53:26] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-05 16:53:28] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-05 16:55:11] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 16:57:19] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 16:59:14] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:00:50] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:01:11] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:01:12] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:03:08] - 127.0.0.1 - Page: /register.php - Issue: [TOKEN USADO] - Token ya validado
+[2024-02-05 17:04:38] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
