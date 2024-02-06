@@ -14,26 +14,27 @@ header {
 }
 
 main {
-height: 100%;
-max-width: 800px;
-margin: 30px auto;
-background-color: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-text-align: center;
+    height: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 section p {
     text-align: justify;
-    font-size: 1.2em; 
-    line-height: 1.5; 
+    font-size: 1.2em;
+    line-height: 1.5;
     margin-left: 3%;
     margin-right: 3%;
 
 }
 
-h1, h2 {
+h1,
+h2 {
     color: #333;
 }
 
@@ -86,11 +87,11 @@ form {
 
 form label {
     display: block;
-    margin-bottom: 5px; 
-    color: #333; 
+    margin-bottom: 5px;
+    color: #333;
     text-align: justify;
-    font-size: 1.2em; 
-    line-height: 1.5; 
+    font-size: 1.2em;
+    line-height: 1.5;
 }
 
 form select {
@@ -103,10 +104,10 @@ form select {
 }
 
 form input {
-    width: 100%; 
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 form button.form-button {
@@ -129,7 +130,7 @@ form button.form-button:hover {
 .button-forum {
     flex-wrap: wrap;
     justify-content: center;
-    margin-top:10px;    
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -158,7 +159,8 @@ form button.form-button:hover {
 }
 
 .form-button {
-    margin-right: 10px; /* Ajusta el valor según sea necesario */
+    margin-right: 10px;
+    /* Ajusta el valor según sea necesario */
 }
 
 .form-button:hover,
@@ -167,7 +169,7 @@ form button.form-button:hover {
 }
 
 .form-button,
-.button-inicio a {    
+.button-inicio a {
     padding: 10px 20px;
     background-color: #6D7993;
     color: #fff;
@@ -231,8 +233,8 @@ form button.form-button:hover {
 
 /* dashboard.php */
 #dashboard_body {
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 #dashboard_body .navbar {
@@ -243,7 +245,7 @@ form button.form-button:hover {
     flex: 1;
     width: 100%;
     margin-bottom: 80px;
-}    
+}
 
 #dashboard ul {
     display: flex;
@@ -279,6 +281,72 @@ form button.form-button:hover {
 
 #dashboard ul li:hover {
     background-color: #9099A2;
+}
+
+/* terms_conditions */
+.modal {
+    display: none;
+    /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 850px;
+    /* Ancho máximo del modal */
+    width: 80%;
+    /* Ancho porcentual del modal */
+}
+
+.modal-content h2, .modal-content p {
+    margin: 5px auto;
+}
+
+.modal-content button {
+    margin: 15px 30px;
+}
+
+/* Estilo del botón de aceptar */
+#acceptBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all .4s ease;
+}
+
+#acceptBtn:hover {
+    border-radius: 40px;
+    scale: 1.05;
+}
+
+#declineBtn {
+    background-color: #cc0000;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all .4s ease;
+}
+
+#declineBtn:hover {
+    border-radius: 40px;
+    scale: 1.05;
 }
 
 /* list_polls.php (Falta Comprovacion)*/
@@ -343,7 +411,7 @@ form button.form-button:hover {
 }
 
 #index main {
-    margin-bottom: 90px ;
+    margin-bottom: 90px;
     flex: 1;
 }
 
@@ -357,7 +425,7 @@ footer {
     width: 100%;
 }
 
-footer > div {
+footer>div {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -378,16 +446,16 @@ footer p {
     transition: text-decoration .5s ease;
 }
 
-.links a:hover{
+.links a:hover {
     text-decoration: underline #fff 1px;
 }
 
 @media only screen and (max-width: 900px) {
     main {
         height: 100%;
-        margin: 40px 10% ;
-        
-        }
+        margin: 40px 10%;
+
+    }
 
 }
 
@@ -403,10 +471,11 @@ footer p {
     float: right;
     margin-right: 10px;
 }
-    
+
 
 .mensaje-notificacion {
-    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+    margin-left: 20px;
+    /* Ajusta el espacio entre el botón de cierre y el mensaje */
 }
 
 .notificacion-error {
@@ -430,10 +499,11 @@ footer p {
     float: right;
     margin-right: 10px;
 }
-    
+
 
 .mensaje-notificacion2 {
-    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+    margin-left: 20px;
+    /* Ajusta el espacio entre el botón de cierre y el mensaje */
 }
 
 .notificacion-error2 {
@@ -462,26 +532,31 @@ footer p {
     margin-left: auto;
     margin-right: auto;
 }
-.pc_title > h2{
+
+.pc_title>h2 {
     font-size: 4em;
     text-align: center;
 }
+
 .pc_main {
     width: 40vw;
     margin-left: auto;
     margin-right: auto;
 }
-.pc_main >form >fieldset {
+
+.pc_main>form>fieldset {
     border-radius: 10px;
 }
+
 #quitOption {
     display: none;
 }
-.pc_buttons input{
-    width: 100%; 
+
+.pc_buttons input {
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 
 
     display: inline-block;
@@ -495,14 +570,14 @@ footer p {
     border: none;
     cursor: pointer;
     background-color: #9099A2;
-    
+
 }
 
-.pc_buttons input:disabled{
-    width: 100%; 
+.pc_buttons input:disabled {
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 
 
     display: inline-block;
@@ -515,5 +590,5 @@ footer p {
     font-size: 18px;
     border: none;
     cursor: not-allowed;
-    border:2px solid red;
+    border: 2px solid red;
 }

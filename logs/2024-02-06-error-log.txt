@@ -1,0 +1,10 @@
+[2024-02-06 15:43:27] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-06 16:28:49] - 127.0.0.1 - Page: /create_poll.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-06 16:38:12] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-06 16:38:21] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-06 16:44:22] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-06 16:44:38] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-06 16:46:29] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-06 16:46:45] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-06 16:47:42] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
+[2024-02-06 16:47:49] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
