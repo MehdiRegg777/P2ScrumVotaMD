@@ -12,11 +12,6 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-// Mostrar el modal cuando se carga la página
-window.onload = function () {
-    modal.style.display = "block";
-}
-
 // Acción al hacer clic en el botón de aceptar
 acceptBtn.onclick = function () {
     // Aquí puedes realizar alguna acción cuando el usuario acepta las condiciones
@@ -29,12 +24,13 @@ acceptBtn.onclick = function () {
         backdrop.parentNode.removeChild(backdrop);
     }
 
-    document.cookie = "terms_condition_accepted="+1;
+    // Redirigir al usuario
     window.location.href = "login.php";
 }
 
 // Acción al hacer clic en el botón de rechazar
 declineBtn.addEventListener("click", function () {
-    document.cookie = "terms_condition_accepted="+0;
+    closeModal();
+    // Redirigir al usuario a la página de inicio
     window.location.href = "index.php";
 });

@@ -106,10 +106,31 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Cambiar parámetro dentro de $row
         if ($row) {
             session_start();
+
             $_SESSION["usuario"] = $row['user_id'];
             $_SESSION['nombre'] = $row['user_name'];
+            $_SESSION["terms_condition_accepted"] = $row['terms_condition_accepted'];
+            $_SESSION["token_verified"] = $row['token_verified'];
             logInfo("Login correcto: " . $email, $_SERVER['PHP_SELF'], "Inicio sesión correcto");
-            header("Location: dashboard.php");
+
+            if ($row['token_verified']==1) {
+                header("Location: dashboard.php");
+            } else {
+
+                session_destroy();
+
+                $mensajeError = "Email no verificado, compruebe su correo";
+                
+                $idNotificacion = md5(uniqid());
+                echo '<script>
+                var ul = document.getElementById("notis_login");
+                var li = document.createElement("li");
+                li.id = "' . $idNotificacion . '";
+                li.innerHTML = "' . $mensajeError . ' <span class=\"cerrar-notificacion\" onclick=\"eliminarNotificacion(\'' . $idNotificacion . '\')\">&times;</span>";
+                ul.appendChild(li);
+            </script>';
+            }
+
             exit();
         } else {
             // Añadir las notificaciones

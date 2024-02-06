@@ -3,7 +3,7 @@ include 'logger.php';
 session_start();
 
 // Verifica si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
+if (!isset($_SESSION["usuario"]) || $_SESSION["token_verified"] == 0) {
     header("HTTP/1.1 403 Forbidden");
     // include('/home/tianleyin/P2ScrumVotaMD/errors/errores403.php');
 
@@ -53,9 +53,6 @@ if (!isset($_SESSION["usuario"])) {
         <!--<a id="logout" href="logout.php">Cerrar sesión</a>-->
     </main>
     <?php
-    if (isset($_GET["succ"])) {
-        echo "<script>successfulNotification('Has iniciado sesión correctamente.');</script>";
-    }
     include_once("recursos/footer.php");
     ?>
     <script src="recursos/modal.js"></script>
@@ -78,62 +75,60 @@ $pw = "Sinlove2004_";
 
 $user_id = $_SESSION['usuario'];
 
-// Verificar si se ha hecho clic en el botón de aceptar
-if (isset($_COOKIE['terms_condition_accepted'])) {
+try {
+    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $terms_condition = $_COOKIE['terms_condition_accepted'];
+    // Consulta SQL para obtener user_id basado en el correo electrónico
+    $sql = "SELECT terms_condition_accepted from user where user_id = :user_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+    $stmt->execute();
 
-    echo $terms_condition;
-    if ($terms_condition == 1) {
-        try {
-            // Conexión a la base de datos
-            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-            // Consulta SQL para actualizar el campo terms_condition_accepted a 1
-            $updateStmt = $pdo->prepare("UPDATE user SET terms_condition_accepted = 1 WHERE user_id = :user_id");
-            $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $updateStmt->execute();
-    
-            // Verificar si se ha actualizado correctamente
-            if ($updateStmt->rowCount() > 0) {
-                echo "<script>alert('Términos y condiciones aceptados correctamente.');</script>";
-                $fechaExpiracion = time() - 3600 * 24 * 365;
-                setcookie($terms_condition, null, $fechaExpiracion);
-            } else {
-                echo "<script>alert('Error al actualizar los términos y condiciones.');</script>";
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
+    // Obtener el resultado
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    $conditions = $result['terms_condition_accepted'];
+} catch (PDOException $e) {
+    logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL",);
 }
 
+// Verificar si el usuario ha aceptado los términos y condiciones
+if (isset($_SESSION['terms_condition_accepted']) && $_SESSION['terms_condition_accepted'] == true) {
+    // Si el usuario ya ha aceptado los términos y condiciones, no mostrar el modal
+    echo "show";
+    exit();
+} else {
+    echo '<script>
+$("#myModal").modal("show");
+</script>';
+}
+
+if ($conditions == 0) {
+    echo $conditions;
     try {
+        // Conexión a la base de datos
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-        // Consulta SQL para obtener user_id basado en el correo electrónico
-        $sql = "SELECT terms_condition_accepted from user where user_id = :user_id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
-        $stmt->execute();
-    
-        // Obtener el resultado
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        if ($result['terms_condition_accepted'] == 0) {
-            // Mostrar el modal para aceptar las condiciones
-            echo '<script>
-                $("#myModal").modal("show");
-            </script>';
+
+        // Consulta SQL para actualizar el campo terms_condition_accepted a 1
+        $updateStmt = $pdo->prepare("UPDATE user SET terms_condition_accepted = 1 WHERE user_id = :user_id");
+        $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $updateStmt->execute();
+
+        // Verificar si se ha actualizado correctamente
+        if ($updateStmt->rowCount() > 0) {
+            echo "Correcto";
+            $_SESSION['terms_condition_accepted'] = true;
         } else {
-            exit();
+            echo "Incorrecto";
+            $_SESSION['terms_condition_accepted'] = false;
         }
     } catch (PDOException $e) {
-        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "CONSULTA SQL",);
+        echo "Error: " . $e->getMessage();
     }
-
+} else {
+    $_SESSION['terms_condition_accepted'] = true;
+}
 
 ?>
