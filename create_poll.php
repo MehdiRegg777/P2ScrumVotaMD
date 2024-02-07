@@ -46,6 +46,9 @@ include_once("recursos/header.php");
             </div> 
         </fieldset>
         <?php
+
+include 'logger.php';
+
         try {
             $hostname = "localhost";
             $dbname = "vota_DDBB";
@@ -58,27 +61,47 @@ include_once("recursos/header.php");
                 $title = $_POST["question_title"];
                 $startDate = $_POST["startDate"];
                 $endDate = $_POST["endDate"];
+                $stmt = $pdo->prepare("INSERT INTO poll (title_name, creation_date, `start_date`, end_date) VALUES (?,now(),?,?)");
+                $stmt->execute([$title,$startDate,$endDate]);
+
                 
-                for ($i = 1; $i <= 100; $i++) {
-                    $optionName = "option" . $i;
-                    if (isset($_POST[$optionName])) {
-                        $optionValue = $_POST[$optionName];
+                $queryPollID = $pdo->prepare("SELECT poll_id FROM poll WHERE title_name = :title order by creation_date desc LIMIT 1");
+                $queryPollID->bindParam(':title', $title); 
+                $queryPollID->execute();
+                $resultID = $queryPollID->fetch(PDO::FETCH_ASSOC);
+                if ($resultID !== false && $resultID !== null) {
+                    for ($i = 1; $i <= 100; $i++) {
+                        $optionName = "option" . $i;
                         
-                        $stmt = $pdo->prepare("INSERT INTO poll_answer (answer) VALUES (?)");
-                        $stmt->execute([$optionValue]);
-
-                        
-                        $querySelectOptionId = $pdo->prepare("SELECT answer_id FROM poll_answer WHERE answer LIKE ?");
-                        $querySelectOptionId->execute([$optionValue]);
-                        $row = $querySelectOptionId->fetch(PDO::FETCH_ASSOC);
-                        $answerId = $row['answer_id'];
-
-                       
-                        $querystr = $pdo->prepare("INSERT INTO poll (title_name, creation_date, update_date, start_date, end_date, question, votes) VALUES (?, NOW(), NOW(), ?, ?, ?, 0)");
-                        $querystr->execute([$title, $startDate, $endDate, $optionValue]);
+                        if (isset($_POST[$optionName] ) ) {
+                            echo $optionName ."<br>-";  
+                            echo $_POST[$optionName]."<br>-";   
+                            $optionValue = $_POST[$optionName];
+                            
+                            $poll_id = $resultID['poll_id'];
+                            $stmtInsert = $pdo->prepare("INSERT INTO answer (answer, poll_id) VALUES (?, ?)");
+                            
+                            $stmtInsert->execute([$optionValue, $poll_id]);
+                            echo 'hasta aqui bien<br>';
+                        }
+                            
                     }
                 }
-                header("Location: dashboard.php");
+                $cMail = $_COOKIE['email'];
+                $mail = $pdo->prepare("SELECT user_id FROM user where email = :email");
+                $mail->bindParam(':email', $cMail); 
+                $mail->execute();
+                $resultMail = $mail->fetch(PDO::FETCH_ASSOC);
+
+
+                $queryPollID = $pdo->prepare("SELECT poll_id FROM poll WHERE title_name = :title order by creation_date desc LIMIT 1");
+                $queryPollID->bindParam(':title', $title); 
+                $queryPollID->execute();
+                $resultID = $queryPollID->fetch(PDO::FETCH_ASSOC);
+                $queryInsertPU = $pdo->prepare("INSERT INTO `poll-user` (user_id,poll_id) VALUES (?,?)");
+                
+                $queryInsertPU->execute([$resultMail['user_id'],$resultID['poll_id']]);
+                $row = $queryInsertPU->fetch(PDO::FETCH_ASSOC);
                 header("Location: dashboard.php?from=create");
             }
 
@@ -86,6 +109,7 @@ include_once("recursos/header.php");
             unset($querystr);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
             exit;
         }
 

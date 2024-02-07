@@ -28,8 +28,8 @@ if (!isset($_SESSION["usuario"])) {
 include_once("recursos/header.php");
 
 if (isset($_GET['from']) && $_GET['from'] === 'create') {
-    // mostrar alerta de javascript
-    echo '<script>alert("Has anyadido correctamente la encuesta!");</script>';
+    // mostrar Mensaje de que se ha added la encuesta
+    echo '<div style="background-color:rgba(255,255,255,0.6);border-radius:5px;"><p style="color:green;">Encuesta añadida</p></div>';
 }
 ?>
     <main id="dashboard">        

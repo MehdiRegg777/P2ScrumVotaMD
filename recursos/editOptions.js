@@ -2,30 +2,13 @@ document.addEventListener("DOMContentLoaded", function(){
     let parentElem = document.getElementsByClassName("pc_options")[0];
     toggleButtonDelete();
     // add un event listener para los inputs no eliminables
-    let title = document.getElementsByTagName('input')[0]
-    title.addEventListener("click", function () {
-        deleteEverythingBelow(title);
-    });
-    
-    let dateStart = document.getElementsByTagName('input')[1]
-    dateStart.addEventListener("click", function () {
-        deleteEverythingBelow(dateStart);
-    });
+    for (let i = 0; i < 5; i++) {
+        let campo = document.getElementsByTagName('input')[i]
+        campo.addEventListener("click", function () {
+            deleteEverythingBelow(campo);
+        });
+    }
 
-    let dateEnd = document.getElementsByTagName('input')[2]
-    dateEnd.addEventListener("click", function () {
-        deleteEverythingBelow(dateEnd);
-    });
-
-    let op1 = document.getElementsByTagName('input')[3]
-    op1.addEventListener("click", function () {
-        deleteEverythingBelow(op1);
-    });
-
-    let op2 = document.getElementsByTagName('input')[4]
-    op2.addEventListener("click", function () {
-        deleteEverythingBelow(op2);
-    });
 
 
     let buttonAdd = document.getElementById("addOption")

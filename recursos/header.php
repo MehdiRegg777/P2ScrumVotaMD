@@ -2,7 +2,9 @@
     <ul>
         <li><a href="index.php">Inicio</a></li>
         <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (isset($_SESSION['usuario'])) {
             echo '<li>';
             if (basename($_SERVER['PHP_SELF']) !== 'dashboard.php') {

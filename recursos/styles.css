@@ -499,3 +499,29 @@ footer p {
     cursor: not-allowed;
     border:2px solid red;
 }
+
+
+
+/****************************************************/
+/*                   Vote Page                      */
+/****************************************************/
+.vp{
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.vp >h2 {
+    font-size: 4em;
+    text-align: center;
+    
+}
+.answers{
+    width: 40vw;
+}
+.vp > .answers > form > label,
+.vp > .answers > form > input {
+    font-size: 4em;
+    text-align: center;
+    display: inline-block !important;
+}
