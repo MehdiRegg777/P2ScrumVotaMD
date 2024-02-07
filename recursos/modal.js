@@ -23,14 +23,14 @@ acceptBtn.onclick = function () {
     if (backdrop) {
         backdrop.parentNode.removeChild(backdrop);
     }
-
-    // Redirigir al usuario
-    window.location.href = "login.php";
+    document.cookie = "terms_condition_accepted=1";
+    window.location.href = "dashboard.php";
 }
 
 // Acción al hacer clic en el botón de rechazar
 declineBtn.addEventListener("click", function () {
     closeModal();
+    document.cookie = "terms_condition_accepted=0";
     // Redirigir al usuario a la página de inicio
     window.location.href = "index.php";
 });

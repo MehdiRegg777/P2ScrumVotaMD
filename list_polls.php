@@ -35,30 +35,19 @@
                 $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                // Consulta SQL para obtener user_id basado en el correo electrónico
-                $sql = "SELECT * from poll as p inner join `poll-answer-user` as pau on p.poll_id = pau.poll_id where pau.user_id = :user_id";
+                $sql = "SELECT * from poll as p inner join `poll-user` as pu on p.poll_id = pu.poll_id where pu.user_id = :user_id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
                 $stmt->execute();
 
                 // Obtener el resultado
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 echo '<ul>';
-                foreach ($resultados as $row) {
+                foreach ($result as $row) {
                     echo '<li>' . $row['title_name'] . ' - ' . ' 
-                    <form action="actualizar_opcion.php" method="POST">
-                    <input type="radio" name="opcion" value="opcion1" onchange="this.form.submit()"> Opción 1
-                    <input type="radio" name="opcion" value="opcion2" onchange="this.form.submit()> Opción 2
-                    <input type="radio" name="opcion" value="opcion3" onchange="this.form.submit()> Opción 3
-                    </form>
-                    <form action="actualizar_opcion.php" method="POST">
-                    <input type="radio" name="opcion" value="opcion1" onchange="this.form.submit()"> Opción 1
-                    <input type="radio" name="opcion" value="opcion2" onchange="this.form.submit()> Opción 2
-                    <input type="radio" name="opcion" value="opcion3" onchange="this.form.submit()> Opción 3
-                    </form>
-                    <button onclick="verDetalles(' . $row['poll_id'] . ')">Ver Detalles</button>
-                </li>';
+                    <a href="detalles_encuesta.php?poll_id=' . $row['poll_id'] . '">Ver detalles</a>
+                    </li>';
                 }
                 echo '</ul>';
             } catch (PDOException $e) {

@@ -94,41 +94,39 @@ try {
 }
 
 // Verificar si el usuario ha aceptado los términos y condiciones
-if (isset($_SESSION['terms_condition_accepted']) && $_SESSION['terms_condition_accepted'] == true) {
+if (isset($_COOKIE['terms_condition_accepted']) && $_COOKIE['terms_condition_accepted'] == 1) {
     // Si el usuario ya ha aceptado los términos y condiciones, no mostrar el modal
     echo "show";
-    exit();
 } else {
     echo '<script>
 $("#myModal").modal("show");
 </script>';
 }
 
-if ($conditions == 0) {
-    echo $conditions;
-    try {
-        // Conexión a la base de datos
-        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Consulta SQL para actualizar el campo terms_condition_accepted a 1
-        $updateStmt = $pdo->prepare("UPDATE user SET terms_condition_accepted = 1 WHERE user_id = :user_id");
-        $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $updateStmt->execute();
-
-        // Verificar si se ha actualizado correctamente
-        if ($updateStmt->rowCount() > 0) {
-            echo "Correcto";
-            $_SESSION['terms_condition_accepted'] = true;
-        } else {
-            echo "Incorrecto";
-            $_SESSION['terms_condition_accepted'] = false;
+if (isset($_COOKIE['terms_condition_accepted']) && $_COOKIE['terms_condition_accepted']==1) {
+    if ($conditions == 0) {
+        try {
+            // Conexión a la base de datos
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            // Consulta SQL para actualizar el campo terms_condition_accepted a 1
+            $updateStmt = $pdo->prepare("UPDATE user SET terms_condition_accepted = 1 WHERE user_id = :user_id");
+            $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $updateStmt->execute();
+    
+            // Verificar si se ha actualizado correctamente
+            if ($updateStmt->rowCount() > 0) {
+                echo "Correcto";
+                $_SESSION['terms_condition_accepted'] = true;
+            } else {
+                echo "Incorrecto";
+                $_SESSION['terms_condition_accepted'] = false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
-} else {
-    $_SESSION['terms_condition_accepted'] = true;
 }
 
 ?>
