@@ -46,7 +46,11 @@
 
                 echo '<ul>';
                 foreach ($resultados as $row) {
-                    echo '<li>' . $row['poll_id'] . ' - ' . $row['otro_campo'] . '</li>';
+                    echo '<li>' . $row['title_name'] . ' - ' . ' 
+                    <input type="radio" name="opcion" value="opcion1"> Opción 1
+                    <input type="radio" name="opcion" value="opcion2"> Opción 2
+                    <button onclick="verDetalles(' . $row['poll_id'] . ')">Ver Detalles</button>
+                </li>';
                 }
                 echo '</ul>';
             } catch (PDOException $e) {

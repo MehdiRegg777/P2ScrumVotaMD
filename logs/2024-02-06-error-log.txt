@@ -39,3 +39,5 @@
 [2024-02-06 19:21:05] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
 [2024-02-06 19:21:14] - 127.0.0.1 - Page: /logout.php - Issue: [Cierre Sesión] - Se ha cerrado la sesión: Tianle
 [2024-02-06 19:21:17] - 127.0.0.1 - Page: /login.php - Issue: [Inicio sesión correcto] - Login correcto: tianleyin8888@gmail.com
+[2024-02-06 22:44:13] - ::1 - Page: /login.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[2024-02-06 22:47:11] - ::1 - Page: /login.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión

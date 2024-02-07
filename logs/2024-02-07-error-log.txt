@@ -1,0 +1,1 @@
+[2024-02-07 00:46:41] - ::1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
