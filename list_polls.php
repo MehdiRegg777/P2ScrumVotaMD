@@ -47,8 +47,16 @@
                 echo '<ul>';
                 foreach ($resultados as $row) {
                     echo '<li>' . $row['title_name'] . ' - ' . ' 
-                    <input type="radio" name="opcion" value="opcion1"> Opción 1
-                    <input type="radio" name="opcion" value="opcion2"> Opción 2
+                    <form action="actualizar_opcion.php" method="POST">
+                    <input type="radio" name="opcion" value="opcion1" onchange="this.form.submit()"> Opción 1
+                    <input type="radio" name="opcion" value="opcion2" onchange="this.form.submit()> Opción 2
+                    <input type="radio" name="opcion" value="opcion3" onchange="this.form.submit()> Opción 3
+                    </form>
+                    <form action="actualizar_opcion.php" method="POST">
+                    <input type="radio" name="opcion" value="opcion1" onchange="this.form.submit()"> Opción 1
+                    <input type="radio" name="opcion" value="opcion2" onchange="this.form.submit()> Opción 2
+                    <input type="radio" name="opcion" value="opcion3" onchange="this.form.submit()> Opción 3
+                    </form>
                     <button onclick="verDetalles(' . $row['poll_id'] . ')">Ver Detalles</button>
                 </li>';
                 }
