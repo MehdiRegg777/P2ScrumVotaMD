@@ -76,7 +76,7 @@
     include("recursos/footer.php"); 
 }catch(PDOException $e){
     echo "Error: " . $e->getMessage();
-    logError($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
+    logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
     exit;
 }
 

@@ -79,16 +79,16 @@
             include 'logger.php';
             session_start();
             // Proxmoxx
-            // $hostname = "localhost";
-            // $dbname = "vota_DDBB";
-            // $username = "aws27";
-            // $pw = "aws27mehdidiego";
-
-            // local
             $hostname = "localhost";
             $dbname = "vota_DDBB";
-            $username = "tianleyin";
-            $pw = "Sinlove2004_";
+            $username = "aws27";
+            $pw = "aws27mehdidiego";
+
+            // local
+            // $hostname = "localhost";
+            // $dbname = "vota_DDBB";
+            // $username = "tianleyin";
+            // $pw = "Sinlove2004_";
 
             $user_id = $_SESSION['usuario'];
 
