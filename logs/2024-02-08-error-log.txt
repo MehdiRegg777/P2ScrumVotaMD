@@ -1,0 +1,8 @@
+[2024-02-08 13:25:05] - ::1 - Page: /detalles_encuesta.php - Issue: [Conexión BD (SELECT)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:05] - ::1 - Page: /detalles_encuesta.php - Issue: [Conexión BD (INSERT)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:09] - ::1 - Page: /dashboard.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:09] - ::1 - Page: /dashboard.php - Issue: [Conexión BD (UPDATE)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:10] - ::1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:11] - ::1 - Page: /dashboard.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:11] - ::1 - Page: /dashboard.php - Issue: [Conexión BD (UPDATE)] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)
+[2024-02-08 13:25:12] - ::1 - Page: /list_polls.php - Issue: [CONSULTA SQL] - SQLSTATE[HY000] [1045] Access denied for user 'aws27'@'localhost' (using password: YES)

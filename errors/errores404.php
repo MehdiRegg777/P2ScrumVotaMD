@@ -13,8 +13,6 @@ header('HTTP/1.0 404 Not Found');
 
 <body>
 
-
-
     <main>
         <section>
             <h2>¡Oops! Página no encontrada</h2>

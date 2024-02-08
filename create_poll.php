@@ -1,3 +1,17 @@
+<?php
+include 'logger.php';
+
+try {
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: login.php");
+    }
+} catch (Exception $e) {
+    logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Ocurrió un error al reconocer al usuario o al acceder a dashboard.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,8 +60,6 @@ include_once("recursos/header.php");
             </div> 
         </fieldset>
         <?php
-
-include 'logger.php';
 
         try {
             $hostname = "localhost";

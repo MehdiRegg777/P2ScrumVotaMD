@@ -1,5 +1,10 @@
 <?php
 
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: index.php");
+    }
+
 function getIPAddress() {  
     //whether ip is from the share internet  
      if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
