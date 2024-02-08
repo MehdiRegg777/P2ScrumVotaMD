@@ -359,6 +359,56 @@ form button.form-button:hover {
     padding: 30px 40px;
 }
 
+/* detalles_encuesta.php */
+#body_detalles {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body_detalles h1, #body_detalles h2 {
+    text-align: center;
+}
+
+#body_detalles .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #fff;
+    margin-bottom: 85px;
+}
+
+#body_detalles #visibility {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#body_detalles #visibility form {
+    margin: auto 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#body_detalles form div {
+    margin-bottom: 10px; /* Espacio entre cada par de input y label */
+    margin: auto 15px;
+}
+
+#body_detalles form div input[type="radio"] {
+    vertical-align: middle; /* Alinear verticalmente con la label */
+    margin-right: 10px; /* Espacio a la derecha del input */
+}
+
+#body_detalles form div label {
+    vertical-align: middle; /* Alinear verticalmente con el input */
+}
+
+
 /* header.php */
 .navbar {
     text-align: center;
