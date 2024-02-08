@@ -72,7 +72,7 @@ try {
 
         try {
             // Conexión a la base de datos
-            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $pdo->prepare("SELECT token_verified, user_id FROM user WHERE token = ?");
@@ -85,6 +85,10 @@ try {
             if ($token_verified == 0) {
 
                 $_SESSION['mensaje'] = "¡Email verificado correctamente! Ahora puedes iniciar sesión.";
+                
+                $updateStmt = $pdo->prepare("UPDATE user SET token_verified = 1 WHERE user_id = :user_id");
+                $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                $updateStmt->execute();
 
                 logInfo("Token verificado correctamente", $_SERVER['PHP_SELF'], "TOKEN VERIFICADO");
 
@@ -253,11 +257,6 @@ try {
     </script>
 
     <?php
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-
-    require "vendor/autoload.php";
     error_reporting(0);
 
     try {
@@ -411,12 +410,8 @@ try {
                         // $mensaje .= "https://aws27.ieti.site/register.php?token=$token_email";
                         $mensaje .= "http://0.0.0.0:8080/register.php?token=$token_email";
 
-                        $cabeceras = "From: aws27.ieti.site" . "\r\n" .
-                            "Reply-To: aws27.ieti.site" . "\r\n" .
-                            "X-Mailer: PHP/" . phpversion();
-
                         // Enviar el correo electrónico
-                        mail($correoElectronico, $asunto, $mensaje, $cabeceras);
+                        mail($email, $asunto, $mensaje);
 
                         logInfo("Mail para verificar el registro enviado correctamente", $_SERVER['PHP_SELF'], "Mail Registro");
                     }
