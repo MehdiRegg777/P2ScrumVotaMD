@@ -8,16 +8,16 @@ if (isset($_GET['poll_id']) && $_SESSION['usuario']) {
     $user_id = $_SESSION['usuario'];
 
     // Proxmoxx
-    // $hostname = "localhost";
-    // $dbname = "vota_DDBB";
-    // $username = "aws27";
-    // $pw = "aws27mehdidiego";
-
-    // local
     $hostname = "localhost";
     $dbname = "vota_DDBB";
-    $username = "tianleyin";
-    $pw = "Sinlove2004_";
+    $username = "aws27";
+    $pw = "aws27mehdidiego";
+
+    // local
+    // $hostname = "localhost";
+    // $dbname = "vota_DDBB";
+    // $username = "tianleyin";
+    // $pw = "Sinlove2004_";
 
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
@@ -36,7 +36,7 @@ if (isset($_GET['poll_id']) && $_SESSION['usuario']) {
             $optionCounts[$option['vote_option']] = $option['option_count'];
         }
     } catch (PDOException $e) {
-        echo 'Error:' . $e->getMessage();
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (SELECT)");
     }
 
     try {
@@ -56,13 +56,11 @@ if (isset($_GET['poll_id']) && $_SESSION['usuario']) {
         if ($result) {
             $_SESSION['title_name'] = $result['title_name'];
         } else {
-            // El ID de encuesta proporcionado no existe
-            // Maneja el caso de error como prefieras
-            echo "El ID de encuesta proporcionado no existe.";
+            logInfo("El ID de encuesta proporcionado no existe en la BD", $_SERVER['PHP_SELF'], "Conexión BD (SELECT)");
             exit();
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (INSERT)");
     }
 } else {
     header("Location: login.php");
@@ -92,7 +90,7 @@ if (isset($_GET['poll_id']) && $_SESSION['usuario']) {
     <?php include_once('recursos/header.php'); ?>
     <main class="container">
         <?php
-            echo "<h1>". $_SESSION['title_name'] ."</h1>";
+        echo "<h1>" . $_SESSION['title_name'] . "</h1>";
         ?>
         <div>
             <?php
@@ -156,35 +154,35 @@ if (isset($_GET['poll_id']) && $_SESSION['usuario']) {
 
         <!-- Apartado de opciones de visibilidad -->
         <div id="visibility">
-        <h2>Enunciado:</h2>
+            <h2>Enunciado:</h2>
             <form method="POST">
                 <div>
-                <input type="radio" id="opcion1" name="enunciado" value="Oculto">
-                <label for="opcion1">Oculto</label>
+                    <input type="radio" id="opcion1" name="enunciado" value="Oculto">
+                    <label for="opcion1">Oculto</label>
                 </div>
                 <div>
-                <input type="radio" id="opcion2" name="enunciado" value="Privado">
-                <label for="opcion2">Privado</label>
+                    <input type="radio" id="opcion2" name="enunciado" value="Privado">
+                    <label for="opcion2">Privado</label>
                 </div>
                 <div>
-                <input type="radio" id="opcion3" name="enunciado" value="Público">
-                <label for="opcion3">Público</label>
+                    <input type="radio" id="opcion3" name="enunciado" value="Público">
+                    <label for="opcion3">Público</label>
                 </div>
                 <button type="submit">Cambiar</button>
             </form>
             <h2>Resultado:</h2>
             <form method="POST">
                 <div>
-                <input type="radio" id="opcion1" name="resultado" value="Oculto">
-                <label for="opcion1">Oculto</label>
+                    <input type="radio" id="opcion1" name="resultado" value="Oculto">
+                    <label for="opcion1">Oculto</label>
                 </div>
                 <div>
-                <input type="radio" id="opcion2" name="resultado" value="Privado">
-                <label for="opcion2">Privado</label>
+                    <input type="radio" id="opcion2" name="resultado" value="Privado">
+                    <label for="opcion2">Privado</label>
                 </div>
                 <div>
-                <input type="radio" id="opcion3" name="resultado" value="Público">
-                <label for="opcion3">Público</label>
+                    <input type="radio" id="opcion3" name="resultado" value="Público">
+                    <label for="opcion3">Público</label>
                 </div>
                 <button type="submit">Cambiar</button>
             </form>
@@ -226,8 +224,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $vPoll_id = 2;
                     break;
                 default:
-                    // Opción no válida
-                    // Puedes manejar esto de acuerdo a tus necesidades
                     break;
             }
 
@@ -235,15 +231,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':vPoll_id', $vPoll_id, PDO::PARAM_INT);
             $stmt->bindParam(':poll_id', $poll_id, PDO::PARAM_INT);
             $stmt->execute();
-
-            // Mensaje de éxito
-            echo "Se actualizó vPoll_id correctamente.";
         } catch (PDOException $e) {
-            // Manejar cualquier error de la base de datos
-            // logInfo
+            logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (UPDATE)");
         }
     } else {
-        // logInfo
+        logInfo("No se han cambiado las opciones de privacidad correctamente", $_SERVER['PHP_SELF'], "Cambio Poll (Privacidad)");
     }
 }
 
@@ -274,8 +266,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $vResult_id = 2;
                     break;
                 default:
-                    // Opción no válida
-                    // Puedes manejar esto de acuerdo a tus necesidades
                     break;
             }
 
@@ -284,11 +274,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':poll_id', $poll_id, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
-            // Manejar cualquier error de la base de datos
-            echo "Error: " . $e->getMessage();
+            logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (UPDATE)");
         }
     } else {
-        // Si no se seleccionó ninguna opción, mostrar un mensaje de error
+        logInfo("No se han cambiado las opciones de privacidad correctamente", $_SERVER['PHP_SELF'], "Cambio Poll (Privacidad)");
     }
 }
 ?>

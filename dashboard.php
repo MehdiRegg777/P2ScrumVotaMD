@@ -62,16 +62,16 @@ if (!isset($_SESSION["usuario"]) || $_SESSION["token_verified"] == 0) {
 
 <?php
 // Proxmoxx
-// $hostname = "localhost";
-// $dbname = "vota_DDBB";
-// $username = "aws27";
-// $pw = "aws27mehdidiego";
-
-// local
 $hostname = "localhost";
 $dbname = "vota_DDBB";
-$username = "tianleyin";
-$pw = "Sinlove2004_";
+$username = "aws27";
+$pw = "aws27mehdidiego";
+
+// local
+// $hostname = "localhost";
+// $dbname = "vota_DDBB";
+// $username = "tianleyin";
+// $pw = "Sinlove2004_";
 
 $user_id = $_SESSION['usuario'];
 
@@ -124,7 +124,7 @@ if (isset($_COOKIE['terms_condition_accepted']) && $_COOKIE['terms_condition_acc
                 $_SESSION['terms_condition_accepted'] = false;
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            logInfo($e->getMessage(), $_SERVER['PHP_SELF'], "Conexión BD (UPDATE)");
         }
     }
 }

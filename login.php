@@ -81,16 +81,17 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $dsn = "mysql:host=localhost;dbname=vota_DDBB";
 
         // Proxmox
-        // $hostname = "localhost";
-        // $dbname = "vota_DDBB";
-        // $username = "aws27";
-        // $pw = "aws27mehdidiego";
-
-        // Local
         $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "tianleyin";
-        $pw = "Sinlove2004_";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+
+        // Local
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "tianleyin";
+        // $pw = "Sinlove2004_";
+
         $pdo = new PDO($dsn, $username, $pw);
 
         // Cambiar query

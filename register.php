@@ -29,16 +29,16 @@ try {
 
     try {
         // Proxmox
-        // $hostname = "localhost";
-        // $dbname = "vota_DDBB";
-        // $username = "aws27";
-        // $pw = "aws27mehdidiego";
-
-        // Local
         $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "tianleyin";
-        $pw = "Sinlove2004_";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+
+        // Local
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "tianleyin";
+        // $pw = "Sinlove2004_";
 
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -59,16 +59,17 @@ try {
 
     if (isset($_GET['token'])) {
         // Proxmox
-        // $hostname = "localhost";
-        // $dbname = "vota_DDBB";
-        // $username = "aws27";
-        // $pw = "aws27mehdidiego";
-
-        // Local
         $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "tianleyin";
-        $password = "Sinlove2004_";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+
+        // Local
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "tianleyin";
+        // $password = "Sinlove2004_";
+
         try {
             // Conexión a la base de datos
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
@@ -261,16 +262,16 @@ try {
 
     try {
         // Proxmox
-        // $hostname = "localhost";
-        // $dbname = "vota_DDBB";
-        // $username = "aws27";
-        // $pw = "aws27mehdidiego";
-
-        // Local
         $hostname = "localhost";
         $dbname = "vota_DDBB";
-        $username = "tianleyin";
-        $pw = "Sinlove2004_";
+        $username = "aws27";
+        $pw = "aws27mehdidiego";
+
+        // Local
+        // $hostname = "localhost";
+        // $dbname = "vota_DDBB";
+        // $username = "tianleyin";
+        // $pw = "Sinlove2004_";
 
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", "$username", "$pw");
     } catch (PDOException $e) {
