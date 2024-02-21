@@ -359,6 +359,69 @@ form button.form-button:hover {
     padding: 30px 40px;
 }
 
+/* detalles_encuesta.php */
+#body_detalles {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body_detalles h1, #body_detalles h2 {
+    text-align: center;
+}
+
+#body_detalles .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #fff;
+    margin-bottom: 85px;
+}
+
+#body_detalles #visibility {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#body_detalles #visibility form {
+    margin: auto 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#body_detalles form div {
+    margin-bottom: 10px; /* Espacio entre cada par de input y label */
+    margin: auto 35px;
+}
+
+#body_detalles form div input[type="radio"] {
+    vertical-align: middle; /* Alinear verticalmente con la label */
+    margin-right: 10px; /* Espacio a la derecha del input */
+}
+
+#body_detalles form div label {
+    vertical-align: middle; /* Alinear verticalmente con el input */
+}
+
+#body_detalles button {
+    background-color: #6D7993;
+    margin-left: 15px;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 30px;
+    transition: background-color .3s ease;
+    border: none;
+}
+
+#body_detalles button:hover {
+    background-color: #9099A2;
+}
+
 /* header.php */
 .navbar {
     text-align: center;
@@ -591,4 +654,530 @@ footer p {
     border: none;
     cursor: not-allowed;
     border: 2px solid red;
+}body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #D5D5D5;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+height: 100%;
+max-width: 800px;
+margin: 30px auto;
+background-color: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+section p {
+    text-align: justify;
+    font-size: 1.2em; 
+    line-height: 1.5; 
+    margin-left: 3%;
+    margin-right: 3%;
+
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+img {
+    width: 180px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container a {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.button-container a:hover {
+    background-color: #9099A2;
+}
+
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px; 
+    color: #333; 
+    text-align: justify;
+    font-size: 1.2em; 
+    line-height: 1.5; 
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+form input {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box; 
+}
+
+form button.form-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+form button.form-button:hover {
+    background-color: #9099A2;
+}
+
+.button-forum {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:10px;    
+    margin-bottom: 20px;
+}
+
+.button-forum a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.button-forum a:hover {
+    background-color: #9099A2;
+    cursor: pointer;
+}
+
+.buttons-registers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.form-button {
+    margin-right: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.form-button:hover,
+.button-inicio a:hover {
+    background-color: #9099A2;
+}
+
+.form-button,
+.button-inicio a {    
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+}
+
+#register_main {
+    margin-bottom: 35px;
+}
+
+#register_body {
+    min-height: 90vh;
+}
+
+/* login.php */
+#login_body {
+    min-height: 95vh;
+}
+
+#login form {
+    text-align: center;
+}
+
+#login button[type='submit'] {
+    background-color: #6D7993;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 15px auto;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    transition: background-color .3s ease;
+}
+
+#login button[type='submit']:hover {
+    background-color: #9099A2;
+    cursor: pointer;
+}
+
+#login .button-inicio {
+    margin-top: 35px;
+}
+
+#login ul {
+    list-style: none;
+}
+
+#login ul li {
+    border: 3px red solid;
+    padding: 20px 25px;
+    border-radius: 10px;
+}
+
+/* dashboard.php */
+#dashboard_body {
+        display: flex;
+        flex-direction: column;
+}
+
+#dashboard {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 80px;
+}    
+
+#dashboard ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 20% 0;
+}
+
+#dashboard ul li {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto 15px;
+    background-color: #6D7993;
+    color: #fff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: background-color .3s ease;
+}
+
+#dashboard a {
+    text-decoration: none;
+    color: #fff;
+    padding: 120px 100px;
+}
+
+#dashboard ul li:hover {
+    background-color: #9099A2;
+}
+
+/* header.php */
+.navbar {
+    text-align: center;
+    padding: 0.8em 0;
+    background-color: #635a5f;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul h3 {
+    margin-left: 10em;
+    font-size: 25px;
+}
+
+.navbar ul li {
+    margin: 0 30px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color .4s ease, text-decoration .4s ease;
+}
+
+.navbar ul li a:hover {
+    color: #6D7993;
+    text-decoration: underline;
+}
+
+/* footer.php */
+#index {
+    display: flex;
+    flex-direction: column;
+}
+
+#index main {
+    margin-bottom: 90px ;
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    background-color: #635a5f;
+    color: #fff;
+    width: 100%;
+}
+
+footer > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer p {
+    margin: 5px auto;
+}
+
+.links div {
+    margin: 5px auto;
+}
+
+.links a {
+    text-decoration: none;
+    color: #fff;
+    transition: text-decoration .5s ease;
+}
+
+.links a:hover{
+    text-decoration: underline #fff 1px;
+}
+
+@media only screen and (max-width: 900px) {
+    main {
+        height: 100%;
+        margin: 40px 10% ;
+        
+        }
+
+}
+
+
+/*               Notificaciones inputs         */
+
+
+
+.cerrar-notificacion {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
+.notificacion-error {
+    background-color: #ffcccc;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+/*                    Notificaciones bbdd            */
+
+
+
+.cerrar-notificacion2 {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    float: right;
+    margin-right: 10px;
+}
+    
+
+.mensaje-notificacion2 {
+    margin-left: 20px; /* Ajusta el espacio entre el botón de cierre y el mensaje */
+}
+
+.notificacion-error2 {
+    background-color: #9099a2;
+    border: 1px solid #96858f;
+    padding: 10px;
+    margin: 30px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+/*Control de imagen de errors forbiden*/
+
+.errorpng {
+    max-width: 50%;
+    height: auto;
+    margin-top: 15px;
+}
+
+/****************************************************/
+/*                 create poll                      */
+/****************************************************/
+.pc_title {
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pc_title > h2{
+    font-size: 4em;
+    text-align: center;
+}
+.pc_main {
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pc_main >form >fieldset {
+    border-radius: 10px;
+}
+#quitOption {
+    display: none;
+}
+.pc_buttons input{
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box; 
+
+
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6D7993;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    background-color: #9099A2;
+    
+}
+
+.pc_buttons input:disabled{
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box; 
+
+
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(70, 78, 94);
+    color: gray;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    border: none;
+    cursor: not-allowed;
+    border:2px solid red;
+}
+
+
+
+/****************************************************/
+/*                   Vote Page                      */
+/****************************************************/
+.vp{
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.vp >h2 {
+    font-size: 4em;
+    text-align: center;
+    
+}
+.answers{
+    width: 40vw;
+}
+.vp > .answers > form > label,
+.vp > .answers > form > input {
+    font-size: 4em;
+    text-align: center;
+    display: inline-block !important;
 }
