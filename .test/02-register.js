@@ -50,6 +50,7 @@ class MyTest extends BasePhpTest {
             const spainOption = await this.driver.wait(until.elementLocated(By.css('option[value="SPAIN"]')), 5000);
             await spainOption.click();
             await this.driver.actions().sendKeys(Key.ENTER).perform();
+            await countryDropdown.sendKeys(Key.ENTER);
 
             const cityInput = await this.driver.wait(until.elementLocated(By.css('.city-input')), 5000);
             await cityInput.sendKeys('Barcelona');
@@ -73,6 +74,7 @@ class MyTest extends BasePhpTest {
                 console.error('Error: La página no muestra un mensaje de éxito. Podría haber ocurrido un problema durante el registro.');
                 console.log(error);
             }
+
 
         } catch (error) {
             console.error("ERROR:", error.message);

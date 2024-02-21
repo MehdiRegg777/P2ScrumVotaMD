@@ -1,0 +1,2 @@
+[2024-02-21 19:01:05] - 127.0.0.1 - Page: /register.php - Issue: [Registro Usuario] - Usuario registrado con éxito.: tianleyin8888@gmail.com
+[2024-02-21 19:01:05] - 127.0.0.1 - Page: /register.php - Issue: [Mail Registro] - Mail para verificar el registro enviado correctamente
